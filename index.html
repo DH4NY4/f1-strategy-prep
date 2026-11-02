@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Box Box: F1 Strategy Prep</title>
+<meta name="description" content="Revision and practice for F1 race strategy interviews and assessments: tyres, pit stops, undercuts, safety cars, timed race calls and interview practice.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F7F9; --sheet:#FFFFFF; --ink:#141820; --muted:#5E6672; --rule:#D9DEE5; --rule-strong:#B9C1CC;
+  --accent:#1C3D6E; --accent-ink:#FFFFFF; --good:#1E7A47; --bad:#B42330; --warn:#9A6400;
+  --soft:#D7262E; --medium:#E8B10F; --hard:#C9CED6; --inter:#2E9A52; --wet:#2F72C8;
+  --focus:#2F72C8; --radius:6px; --shadow:0 1px 0 rgba(20,24,32,.04);
+}
+:root[data-theme="dark"]{
+  --paper:#0F1218; --sheet:#171B23; --ink:#E8EBF0; --muted:#9AA3AF; --rule:#2A303B; --rule-strong:#3A4250;
+  --accent:#8FB4EE; --accent-ink:#0F1218; --good:#4CC27F; --bad:#F06A72; --warn:#E3B04B; --hard:#E8EBF0;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1218; --sheet:#171B23; --ink:#E8EBF0; --muted:#9AA3AF; --rule:#2A303B; --rule-strong:#3A4250;
+    --accent:#8FB4EE; --accent-ink:#0F1218; --good:#4CC27F; --bad:#F06A72; --warn:#E3B04B; --hard:#E8EBF0;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 "Barlow",system-ui,sans-serif;font-variant-numeric:tabular-nums}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;z-index:50;background:var(--sheet);padding:8px 12px}
+h1,h2,h3{font-family:"Barlow Condensed",sans-serif;line-height:1.1;margin:0 0 .4em}
+h1{font-size:clamp(2.3rem,5vw,3.6rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.75rem;font-weight:700;margin-top:1.6em}
+h3{font-size:1.3rem;font-weight:600;margin-top:1.2em}
+p{margin:0 0 1em;max-width:72ch}
+ul,ol{max-width:72ch;padding-left:1.25em}li{margin:.25em 0}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em}
+
+/* top bar + layout */
+.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--sheet);border-bottom:1px solid var(--rule)}
+.brand{font:700 1.5rem/1 "Barlow Condensed",sans-serif;color:var(--ink);text-decoration:none;display:flex;align-items:baseline;gap:10px}
+.brand span{font:500 .95rem "Barlow",sans-serif;color:var(--muted)}
+.theme-btn,.menu-btn{margin-left:auto;font:600 .9rem "Barlow",sans-serif;background:none;border:1px solid var(--rule-strong);color:var(--ink);border-radius:var(--radius);padding:6px 12px;cursor:pointer}
+.menu-btn{display:none;margin-left:0}
+.layout{display:grid;grid-template-columns:250px minmax(0,1fr);min-height:calc(100vh - 54px)}
+.nav{border-right:1px solid var(--rule);background:var(--sheet);padding:18px 14px 40px;position:sticky;top:54px;height:calc(100vh - 54px);overflow:auto}
+.nav h4{font:600 .82rem "Barlow",sans-serif;color:var(--muted);margin:18px 8px 6px}
+.nav a{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:var(--radius);color:var(--ink);text-decoration:none;font-size:.98rem}
+.nav a:hover{background:var(--paper)}
+.nav a[aria-current="page"]{background:var(--ink);color:var(--paper)}
+.nav .done{margin-left:auto;font-size:.8rem;color:var(--good)}
+.nav a[aria-current="page"] .done{color:var(--paper)}
+.main{padding:32px clamp(16px,4vw,56px) 80px;max-width:1080px;width:100%;min-width:0}
+.main:focus{outline:none}
+.lead{font-size:1.15rem;color:var(--muted);max-width:62ch}
+.crumb{font-size:.92rem;color:var(--muted);margin-bottom:6px}
+
+/* cards & panels */
+.panel{background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius);padding:20px;margin:16px 0;box-shadow:var(--shadow)}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.tile{display:block;background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius);padding:16px;color:var(--ink);text-decoration:none}
+.tile:hover{border-color:var(--ink)}
+.tile strong{display:block;font:600 1.25rem "Barlow Condensed",sans-serif;margin-bottom:2px}
+.tile span{color:var(--muted);font-size:.95rem}
+.note{border-left:4px solid var(--accent);background:var(--sheet);padding:12px 16px;margin:16px 0;border-radius:0 var(--radius) var(--radius) 0}
+.note.warn{border-color:var(--warn)}
+.formula{font:500 1.1rem "Barlow",sans-serif;background:var(--sheet);border:1px dashed var(--rule-strong);border-radius:var(--radius);padding:10px 14px;margin:12px 0;max-width:72ch}
+.worked{background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius);padding:14px 16px;margin:14px 0}
+.worked b:first-child{font-family:"Barlow Condensed",sans-serif;font-size:1.1rem}
+
+/* tyre chips: the compound colour carries meaning */
+.tyre{display:inline-flex;align-items:center;justify-content:center;width:1.55em;height:1.55em;border-radius:50%;border:.22em solid var(--c);font:700 .78em "Barlow Condensed",sans-serif;color:var(--ink);background:var(--sheet);vertical-align:-.25em}
+.tyre.S{--c:var(--soft)}.tyre.M{--c:var(--medium)}.tyre.H{--c:var(--hard)}.tyre.I{--c:var(--inter)}.tyre.W{--c:var(--wet)}
+
+/* stint bars */
+.stints{display:flex;height:30px;border-radius:4px;overflow:hidden;border:1px solid var(--rule-strong);margin:6px 0 2px}
+.stint{display:flex;align-items:center;justify-content:center;font:700 .9rem "Barlow Condensed",sans-serif;color:#141820;min-width:0;white-space:nowrap;overflow:hidden}
+.stint.S{background:var(--soft);color:#fff}.stint.M{background:var(--medium)}.stint.H{background:#E9ECEF}.stint.I{background:var(--inter);color:#fff}.stint.W{background:var(--wet);color:#fff}
+.stint+.stint{border-left:3px solid var(--ink)}
+.stint-label{font-size:.88rem;color:var(--muted)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px;align-items:center;margin-bottom:28px}
+.hero h1 em{font-style:normal;color:var(--soft)}
+.call{background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius);padding:18px}
+.call .sit{font-size:.98rem;color:var(--muted);margin-bottom:8px}
+.radio{font:600 1.15rem "Barlow Condensed",sans-serif;border-left:4px solid var(--soft);padding-left:10px;margin:8px 0 12px}
+
+/* forms */
+label{display:block;font-weight:600;font-size:.95rem;margin:10px 0 4px}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:4px 18px}
+.slider{display:flex;align-items:center;gap:10px}
+.slider input[type=range]{flex:1;accent-color:var(--accent)}
+.slider output{min-width:70px;text-align:right;font-weight:600}
+input[type=text],input[type=number],select,textarea{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--rule-strong);border-radius:var(--radius);padding:8px 10px;width:100%;max-width:280px}
+textarea{max-width:100%;min-height:110px}
+.btn{font:600 1rem "Barlow",sans-serif;background:var(--ink);color:var(--paper);border:1px solid var(--ink);border-radius:var(--radius);padding:9px 16px;cursor:pointer;margin:6px 8px 6px 0}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--rule-strong)}
+.btn:disabled{opacity:.45;cursor:default}
+.choices{display:grid;gap:8px;margin:12px 0}
+.choice{text-align:left;font:500 1rem "Barlow",sans-serif;background:var(--paper);color:var(--ink);border:1px solid var(--rule-strong);border-radius:var(--radius);padding:10px 14px;cursor:pointer}
+.choice:hover:not(:disabled){border-color:var(--ink)}
+.choice.right{border-color:var(--good);background:color-mix(in srgb,var(--good) 12%,var(--sheet))}
+.choice.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,var(--sheet))}
+
+/* results */
+.result{font-size:1.05rem;margin:12px 0}
+.big{font:700 2.4rem/1 "Barlow Condensed",sans-serif}
+.verdict-good{color:var(--good)}.verdict-bad{color:var(--bad)}.verdict-warn{color:var(--warn)}
+.feedback{margin-top:12px;padding:12px 14px;border-radius:var(--radius);background:var(--paper);border:1px solid var(--rule)}
+.feedback.ok{border-color:var(--good)}.feedback.no{border-color:var(--bad)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;margin:8px 0}
+.kv dt{color:var(--muted)}.kv dd{margin:0;font-weight:600}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:.95rem}
+th,td{border-bottom:1px solid var(--rule);padding:7px 8px;text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted)}
+td.num,th.num{text-align:right}
+
+/* timer */
+.timer{height:8px;background:var(--rule);border-radius:4px;overflow:hidden;margin:10px 0}
+.timer>div{height:100%;background:var(--ink);transition:width .25s linear}
+.timer.low>div{background:var(--bad)}
+.score{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:.95rem}
+.score b{color:var(--ink)}
+
+/* charts */
+.chart{width:100%;height:auto;display:block;margin:8px 0}
+.chart text{font-family:"Barlow",sans-serif;font-size:12px;fill:var(--muted)}
+.chart .axis{stroke:var(--rule-strong)}.chart .gridl{stroke:var(--rule)}
+.chart .line{fill:none;stroke-width:2.4}
+.chart .lbl{fill:var(--ink);font-weight:600}
+
+/* flashcards */
+.flash{min-height:180px;display:flex;flex-direction:column;justify-content:center;font-size:1.15rem}
+.flash .back{margin-top:14px;padding-top:14px;border-top:1px solid var(--rule)}
+.boxes{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.boxes span{border:1px solid var(--rule-strong);border-radius:var(--radius);padding:4px 10px;font-size:.9rem}
+
+/* progress bars */
+.bar{height:10px;background:var(--rule);border-radius:5px;overflow:hidden;min-width:120px}
+.bar>div{height:100%;background:var(--accent)}
+
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  .menu-btn{display:inline-block}
+  .nav{display:none;position:fixed;top:54px;left:0;right:0;bottom:0;height:auto;z-index:15;border-right:0}
+  .nav.open{display:block}
+  .hero{grid-template-columns:1fr}
+  body{font-size:16px}
+  .brand span{display:none}
+  table{display:block;overflow-x:auto}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+</style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23141820'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23D7262E' stroke-width='3'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%23F6F7F9'/%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+  <a class="brand" href="#/">Box Box<span>F1 strategy prep</span></a>
+  <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">Dark</button>
+</header>
+<div class="layout">
+  <nav id="nav" class="nav" aria-label="Sections"></nav>
+  <main id="main" class="main" tabindex="-1"></main>
+</div>
+<script>
+// Progress storage: saved in this browser only. Every access is wrapped so the
+// site still works when storage is blocked (private windows, strict settings).
+const Store = (() => {
+  const KEY = 'boxbox-v1';
+  let mem = {};
+  function load() {
+    try { const raw = localStorage.getItem(KEY); if (raw) mem = JSON.parse(raw) || {}; } catch (e) { /* use memory */ }
+    return mem;
+  }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(mem)); } catch (e) { /* memory only */ } }
+  load();
+  return {
+    get(path, fallback) { return path.split('.').reduce((o, k) => (o && k in o ? o[k] : undefined), mem) ?? fallback; },
+    set(path, value) {
+      const keys = path.split('.'); let o = mem;
+      keys.slice(0, -1).forEach(k => { if (typeof o[k] !== 'object' || o[k] === null) o[k] = {}; o = o[k]; });
+      o[keys[keys.length - 1]] = value; save();
+    },
+    // record an attempt in a practice area: {attempts, correct}
+    tally(area, correct) {
+      const t = this.get('tally.' + area, { attempts: 0, correct: 0 });
+      t.attempts += 1; if (correct) t.correct += 1; this.set('tally.' + area, t);
+    },
+    reset() { mem = {}; save(); },
+    all() { return mem; }
+  };
+})();
+
+</script>
+<script>
+// Simple, transparent strategy maths shared by the tools and drills.
+// Lap time = base + compound offset + degradation x tyre age (+ optional cliff) + fuel effect.
+const Model = (() => {
+  const COMPOUNDS = {
+    S: { name: 'Soft', offset: 0.0, deg: 0.12, cliff: 18, cliffRate: 0.05 },
+    M: { name: 'Medium', offset: 0.5, deg: 0.07, cliff: 30, cliffRate: 0.04 },
+    H: { name: 'Hard', offset: 0.9, deg: 0.04, cliff: 45, cliffRate: 0.03 }
+  };
+
+  // time for one lap on a tyre of age `age` (0 = first lap on the set)
+  function lapOnTyre(c, age) {
+    let t = c.offset + c.deg * age;
+    if (c.cliff != null && age > c.cliff) t += c.cliffRate * (age - c.cliff) ** 2;
+    return t;
+  }
+  function stintTime(c, laps, startAge = 0) {
+    let t = 0; for (let a = startAge; a < startAge + laps; a++) t += lapOnTyre(c, a); return t;
+  }
+  // strategy: array of {c:'S'|'M'|'H', laps}; p: {pitLoss, compounds}
+  // Returns time relative to base lap x race laps (base and fuel are the same for every strategy, so they cancel).
+  function strategyTime(strategy, p) {
+    let t = 0; strategy.forEach((s, i) => { t += stintTime(p.compounds[s.c], s.laps); if (i > 0) t += p.pitLoss; }); return t;
+  }
+  function validDry(strategy) { return new Set(strategy.map(s => s.c)).size >= 2; }
+
+  function oneStopCurve(c1, c2, N, p) {
+    const pts = [];
+    for (let lap = 1; lap < N; lap++) pts.push({ x: lap, y: strategyTime([{ c: c1, laps: lap }, { c: c2, laps: N - lap }], p) });
+    return pts;
+  }
+  function best(strats, p) {
+    let bestS = null, bestT = Infinity;
+    strats.forEach(s => { const t = strategyTime(s, p); if (t < bestT) { bestT = t; bestS = s; } });
+    return { strategy: bestS, time: bestT };
+  }
+  function allOneStops(N, keys) {
+    const out = [];
+    keys.forEach(a => keys.forEach(b => { if (a !== b) for (let l = 1; l < N; l++) out.push([{ c: a, laps: l }, { c: b, laps: N - l }]); }));
+    return out;
+  }
+  function allTwoStops(N, keys, minStint = 3) {
+    const out = [];
+    keys.forEach(a => keys.forEach(b => keys.forEach(c => {
+      if (new Set([a, b, c]).size < 2) return;
+      for (let l1 = minStint; l1 < N - 2 * minStint + 1; l1++) for (let l2 = minStint; l1 + l2 <= N - minStint; l2++)
+        out.push([{ c: a, laps: l1 }, { c: b, laps: l2 }, { c: c, laps: N - l1 - l2 }]);
+    })));
+    return out;
+  }
+
+  // Undercut: A is `gap` seconds behind B. A pits first; B stays out `k` more laps.
+  // Each lap A is on new tyres and B on old ones, A gains `fresh` seconds; A loses `warm` once on its out-lap.
+  // Pit loss is the same for both cars, so it cancels. Positive margin = A comes out ahead.
+  function undercut(gap, fresh, warm, k) { return k * fresh - warm - gap; }
+
+  // Rejoin: how many of the cars behind (gaps in seconds) you drop behind after a stop costing `loss` seconds.
+  function rejoin(gapsBehind, loss) { return gapsBehind.filter(g => g < loss).length; }
+
+  function pitLossFromLane(laneLength, limitKph, trackKph, stationary) {
+    return laneLength / (limitKph / 3.6) - laneLength / (trackKph / 3.6) + stationary;
+  }
+
+  // formatting and random helpers
+  const fmtTime = s => { const m = Math.floor(s / 60); const r = s - 60 * m; return `${m}:${r.toFixed(3).padStart(6, '0')}`; };
+  const sgn = (x, d = 1) => (x > 0 ? '+' : x < 0 ? '−' : '') + Math.abs(x).toFixed(d);
+  const rnd = (a, b, step = 1) => { const n = Math.round((b - a) / step); return +(a + step * Math.floor(Math.random() * (n + 1))).toFixed(6); };
+  const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+  const shuffle = arr => { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const stratLabel = s => s.map(x => `${x.c}${x.laps}`).join(' → ');
+
+  return { COMPOUNDS, lapOnTyre, stintTime, strategyTime, validDry, oneStopCurve, best, allOneStops, allTwoStops,
+           undercut, rejoin, pitLossFromLane, fmtTime, sgn, rnd, pick, shuffle, stratLabel };
+})();
+
+</script>
+<script>
+// Minimal SVG line chart: series = [{name, color, points:[{x,y}]}], opts = {xLabel, yLabel, mark:{x,y,label}, h}
+const Charts = (() => {
+  function nice(min, max, n = 5) {
+    const span = max - min || 1, raw = span / n, mag = 10 ** Math.floor(Math.log10(raw));
+    const step = [1, 2, 2.5, 5, 10].map(s => s * mag).find(s => s >= raw);
+    const lo = Math.floor(min / step) * step, hi = Math.ceil(max / step) * step, ticks = [];
+    for (let v = lo; v <= hi + step / 2; v += step) ticks.push(+v.toFixed(6));
+    return { lo, hi, ticks };
+  }
+  function line(series, opts = {}) {
+    const W = 680, H = opts.h || 300, L = 62, R = 18, T = 16, B = 46;
+    const xs = series.flatMap(s => s.points.map(p => p.x)), ys = series.flatMap(s => s.points.map(p => p.y));
+    const xa = nice(Math.min(...xs), Math.max(...xs), 6), ya = nice(Math.min(...ys), Math.max(...ys), 5);
+    const X = x => L + (x - xa.lo) / (xa.hi - xa.lo) * (W - L - R), Y = y => H - B - (y - ya.lo) / (ya.hi - ya.lo) * (H - T - B);
+    let s = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${opts.aria || 'chart'}">`;
+    ya.ticks.forEach(t => { s += `<line class="gridl" x1="${L}" x2="${W - R}" y1="${Y(t)}" y2="${Y(t)}"/><text x="${L - 8}" y="${Y(t) + 4}" text-anchor="end">${+t.toFixed(2)}</text>`; });
+    xa.ticks.forEach(t => { s += `<text x="${X(t)}" y="${H - B + 18}" text-anchor="middle">${+t.toFixed(2)}</text>`; });
+    s += `<line class="axis" x1="${L}" x2="${W - R}" y1="${H - B}" y2="${H - B}"/><line class="axis" x1="${L}" x2="${L}" y1="${T}" y2="${H - B}"/>`;
+    if (opts.xLabel) s += `<text x="${(L + W - R) / 2}" y="${H - 8}" text-anchor="middle">${opts.xLabel}</text>`;
+    if (opts.yLabel) s += `<text transform="translate(14 ${(T + H - B) / 2}) rotate(-90)" text-anchor="middle">${opts.yLabel}</text>`;
+    series.forEach(se => {
+      const d = se.points.map((p, i) => `${i ? 'L' : 'M'}${X(p.x).toFixed(1)} ${Y(p.y).toFixed(1)}`).join('');
+      s += `<path class="line" d="${d}" stroke="${se.color}"${se.dash ? ' stroke-dasharray="6 5"' : ''}/>`;
+      if (se.name) { const last = se.points[se.points.length - 1]; s += `<text class="lbl" x="${Math.min(X(last.x) - 4, W - R - 4)}" y="${Y(last.y) - 8}" text-anchor="end">${se.name}</text>`; }
+    });
+    if (opts.mark) { const m = opts.mark; s += `<circle cx="${X(m.x)}" cy="${Y(m.y)}" r="5.5" fill="var(--soft)"/><text class="lbl" x="${X(m.x)}" y="${Y(m.y) + 22}" text-anchor="middle">${m.label}</text>`; }
+    return s + '</svg>';
+  }
+  return { line };
+})();
+
+</script>
+<script>
+// Learn pages. Each page: id, title, blurb, html. Tyre chip helper: T('S').
+window.Pages = window.Pages || {};
+const T = c => `<span class="tyre ${c}" aria-label="${{ S: 'Soft', M: 'Medium', H: 'Hard', I: 'Intermediate', W: 'Wet' }[c]}">${c}</span>`;
+
+const LEARN = [
+{ id: 'strategist', title: 'What a strategist does', blurb: 'The job before, during and after a race',
+html: `
+<p class="lead">A race strategist decides when to pit, which tyres to fit and how to react to the race, using models, live data and probability. The job is making good decisions quickly with incomplete information.</p>
+<h2>Before the race</h2>
+<ul>
+<li><b>Practice analysis:</b> long runs in practice give each compound's pace and degradation. Laps are fuel-corrected and traffic laps removed before fitting a degradation model.</li>
+<li><b>Race simulation:</b> a model simulates the race for every sensible strategy, giving the expected race time for one, two and three stops.</li>
+<li><b>Monte Carlo:</b> thousands of simulated races with random safety cars, pit-stop variation and pace noise show how robust each plan is, not just how fast it is on average.</li>
+<li><b>Plan A, B and C:</b> the preferred strategy plus pre-agreed reactions, for example "if a safety car comes between laps 15 and 25, pit for hards".</li>
+</ul>
+<h2>During the race</h2>
+<ul>
+<li>Watch gaps, tyre performance and rivals' pace; update the model with real degradation.</li>
+<li>Spot undercut threats, call pit stops, react to safety cars and weather.</li>
+<li>Communicate clear, short calls to the race engineer, who talks to the driver.</li>
+</ul>
+<h2>After the race</h2>
+<ul>
+<li>Review every decision: was it right with the information available at the time? (Judge the decision, not just the outcome.)</li>
+<li>Compare predicted and actual degradation and pit loss, and correct the models: this is correlation.</li>
+</ul>
+<div class="note">Interview tip: when asked how you would make a call, structure the answer as <b>information</b> (what you know), <b>options</b>, <b>trade-off</b> (time, risk, track position) and <b>decision</b>, then say what would change your mind.</div>` },
+
+{ id: 'tyres', title: 'Tyres and degradation', blurb: 'Compounds, wear, the cliff, warm-up',
+html: `
+<p class="lead">Tyres are the main strategic variable: each compound trades peak grip against how quickly it loses performance.</p>
+<h2>The compounds</h2>
+<p>At each event the tyre supplier nominates three dry compounds, labelled ${T('S')} Soft, ${T('M')} Medium and ${T('H')} Hard, plus ${T('I')} Intermediates and ${T('W')} Full wets for rain. In a dry race each car must use at least two different dry compounds.</p>
+<table><tr><th>Compound</th><th>Peak pace</th><th>Degradation</th><th>Typical use</th></tr>
+<tr><td>${T('S')} Soft</td><td>Fastest</td><td>Highest</td><td>Qualifying, short stints, late-race attack</td></tr>
+<tr><td>${T('M')} Medium</td><td>Middle</td><td>Middle</td><td>Flexible race tyre</td></tr>
+<tr><td>${T('H')} Hard</td><td>Slowest</td><td>Lowest</td><td>Long stints, one-stop races</td></tr></table>
+<h2>How a tyre loses time</h2>
+<ul>
+<li><b>Wear degradation:</b> rubber is worn away; lap time rises steadily with tyre age.</li>
+<li><b>Thermal degradation:</b> the tyre overheats, especially when sliding or following another car, and loses grip. Managing pace can recover it.</li>
+<li><b>Graining:</b> rubber tears and rolls up on the surface, often on a cold, green track; it can clear after a few laps.</li>
+<li><b>Blistering:</b> overheating inside the tyre makes pockets of rubber break away; usually permanent.</li>
+<li><b>The cliff:</b> when the tyre is worn out, lap time suddenly drops off sharply. Stopping just before the cliff is a key judgement.</li>
+<li><b>Warm-up:</b> new tyres need a lap or so to reach their operating window, so the out-lap is slower than the tyre's true pace.</li>
+</ul>
+<h2>The simple model</h2>
+<div class="formula">lap time = base + compound offset + degradation rate × tyre age</div>
+<div class="worked"><b>Worked example</b><br>A new Medium is 0.5 s/lap slower than a new Soft. The Soft degrades at 0.12 s per lap of age, the Medium at 0.07.<br>
+<b>When is a worn Soft slower than a brand-new Medium?</b> When 0.12 × age &gt; 0.5, so after about 4 laps (0.5 ÷ 0.12 ≈ 4.2).<br>
+<b>When are the two equal if both are the same age?</b> The Soft loses 0.05 s/lap more each lap (0.12 − 0.07), so they match at 0.5 ÷ 0.05 = 10 laps of age; after that the Medium is faster.</div>
+<p><a href="#/tools/degradation">Try the degradation plotter</a> to see how the cliff changes the cost of a long stint.</p>` },
+
+{ id: 'fuel', title: 'Fuel effect', blurb: 'Why lap times fall as fuel burns',
+html: `
+<p class="lead">A car starts heavy with fuel and gets lighter every lap, so it gets faster. That hides tyre degradation unless you correct for it.</p>
+<div class="formula">fuel-corrected lap time = measured lap time − fuel effect × fuel mass on board</div>
+<p>A commonly quoted rule of thumb is about <b>0.03 s per lap per kilogram</b> of fuel (illustrative; the real value depends on the circuit and the car). With a burn of around 1.5 to 2 kg per lap, the car gains roughly 0.05 s per lap from fuel alone.</p>
+<div class="worked"><b>Worked example</b><br>Lap times on one stint are flat at 1:32.0 for 10 laps. Fuel burn is 1.8 kg/lap and the effect is 0.03 s/kg, so each lap the car should be 0.054 s faster from fuel. Flat lap times therefore mean the tyre is losing about 0.054 s per lap: real degradation that the fuel burn was hiding.</div>
+<div class="note">Why it matters: strategy decisions use tyre degradation, so it must be measured from fuel-corrected laps. Because every strategy burns the same fuel, fuel effect cancels when comparing strategies in a race simulation.</div>` },
+
+{ id: 'pitstops', title: 'Pit stops and pit loss', blurb: 'What a stop costs and why it varies',
+html: `
+<p class="lead">Pit loss is the total time a stop costs compared with staying on track. It is the price you pay for fresh tyres.</p>
+<h2>Where the time goes</h2>
+<ul>
+<li><b>Pit lane:</b> the lane has a speed limit (80 km/h at most circuits, lower at some street circuits), while cars on track pass at far higher speed.</li>
+<li><b>Stationary time:</b> the tyre change itself, typically 2 to 3 seconds for a clean stop.</li>
+<li><b>Entry and exit:</b> braking for the pit entry and accelerating out.</li>
+</ul>
+<div class="formula">pit loss ≈ lane length ÷ speed limit − lane length ÷ track speed + stationary time</div>
+<div class="worked"><b>Worked example</b><br>A 380 m pit lane at 80 km/h (22.2 m/s) takes 17.1 s. On track the same stretch at an average 200 km/h (55.6 m/s) takes 6.8 s. So the lane costs 10.3 s, plus 2.5 s stationary: about 12.8 s, plus entry and exit losses. Real pit losses are usually around 18 to 25 s, depending on the circuit.</div>
+<h2>Things that change it</h2>
+<ul>
+<li><b>Safety car or VSC:</b> the field is slower, so the relative loss is much smaller (see Safety cars).</li>
+<li><b>Double stack:</b> both team cars pit on the same lap; the second waits while the first is serviced.</li>
+<li><b>Traffic on exit:</b> rejoining behind slower cars costs more time than the stop itself.</li>
+</ul>
+<p><a href="#/drills">Practise pit loss and rejoin sums in the drills.</a></p>` },
+
+{ id: 'undercut', title: 'Undercut and overcut', blurb: 'Pitting first versus staying out',
+html: `
+<p class="lead">The undercut: pit before the car ahead, use the fresh tyres' extra pace while they are still on old ones, and come out ahead when they stop. The overcut: stay out longer and gain while the other car struggles on cold new tyres or in traffic.</p>
+<div class="formula">undercut margin = laps of advantage × fresh-tyre gain per lap − out-lap warm-up loss − gap to the car ahead</div>
+<p>Pit loss cancels because both cars pay it. A positive margin means the undercut works.</p>
+<div class="worked"><b>Worked example</b><br>You are 1.2 s behind. New tyres are 1.8 s/lap faster than the rival's worn ones, and your out-lap costs 0.6 s of warm-up. The rival pits one lap after you. Margin = 1 × 1.8 − 0.6 − 1.2 = 0.0 s: dead level, so it comes down to the pit stop execution. If the rival stayed out two laps, margin = 3.6 − 0.6 − 1.2 = +1.8 s: a clear undercut.</div>
+<h2>When the undercut works</h2>
+<ul><li>High degradation, so old tyres are much slower than new ones.</li><li>New tyres warm up quickly.</li><li>The gap is small and you rejoin in clear air.</li></ul>
+<h2>When the overcut works</h2>
+<ul><li>Low degradation: old tyres are still almost as fast as new.</li><li>New tyres are slow to warm up (cold track, hard compound).</li><li>The car that pits first rejoins in traffic.</li><li>The track is drying or a safety car is likely, so staying out keeps options open.</li></ul>
+<p><a href="#/tools/undercut">Try the undercut calculator.</a></p>` },
+
+{ id: 'stops', title: 'One stop or two?', blurb: 'Trading pit loss against degradation',
+html: `
+<p class="lead">Every extra stop costs one pit loss but shortens the stints, so the tyres degrade less. The best number of stops is where those two balance.</p>
+<p>With linear degradation d (s/lap per lap of age), a stint of L laps loses d × L(L − 1) / 2 seconds to degradation. Splitting the race into more, shorter stints cuts that loss.</p>
+<div class="worked"><b>Worked example (same compound, to show the trade-off)</b><br>60-lap race, degradation 0.1 s/lap per lap, pit loss 22 s.<br>
+One stop, two stints of 30: degradation loss = 2 × 0.1 × 30 × 29 / 2 = 87 s, plus one pit loss = 109 s.<br>
+Two stops, three stints of 20: 3 × 0.1 × 20 × 19 / 2 = 57 s, plus two pit losses = 101 s.<br>
+The two-stop saves 30 s of degradation for an extra 22 s pit loss, so it is <b>8 s faster</b>. With degradation of 0.05, it saves only 15 s, less than the pit loss, so the one-stop wins.</div>
+<div class="note">Rules of thumb: high degradation and low pit loss favour more stops; low degradation, high pit loss and hard-to-pass circuits favour fewer stops, because track position is worth more.</div>
+<p><a href="#/tools/pitwindow">Explore it in the pit window tool.</a></p>` },
+
+{ id: 'safetycar', title: 'Safety cars, VSC and red flags', blurb: 'Cheap stops and tough calls',
+html: `
+<p class="lead">Under a safety car the whole field slows down, so a pit stop costs much less relative time. That makes safety cars the biggest strategic swing in most races.</p>
+<table><tr><th>Situation</th><th>What happens</th><th>Strategic effect</th></tr>
+<tr><td>Safety car (SC)</td><td>Cars queue behind the safety car at reduced speed</td><td>Pit loss roughly halves (illustrative); gaps are wiped out when the field bunches up</td></tr>
+<tr><td>Virtual safety car (VSC)</td><td>Every car must slow to a set delta time; no queue</td><td>Smaller saving than a full SC, but gaps are kept</td></tr>
+<tr><td>Red flag</td><td>Session stopped; cars return to the pit lane</td><td>Teams may change tyres while stopped, so a "free" stop for everyone; anyone who pitted just before loses out</td></tr></table>
+<h2>The pit-or-stay-out call</h2>
+<ul>
+<li><b>If you pit and others don't:</b> you lose track position but gain fresh tyres cheaply. Can you pass them on track?</li>
+<li><b>If others pit and you don't:</b> you gain track position but are on old tyres. Can you hold them off?</li>
+<li><b>Laps remaining:</b> can the new tyres reach the end? Is there time to use the pace advantage?</li>
+<li><b>Double stack:</b> pitting both cars on the same lap costs the second car time waiting.</li>
+<li><b>Copy or split:</b> leaders often copy the car behind to cover; cars further back often take the opposite call to gain.</li>
+</ul>
+<div class="worked"><b>Worked example</b><br>Green-flag pit loss is 22 s. Under the SC it is about 11 s. Cars behind you are 4, 9, 13 and 25 s back. Pitting under green drops you behind three cars (4, 9 and 13 are all under 22). Under the SC you drop behind only two (4 and 9 are under 11), and the field then bunches up anyway.</div>
+<p><a href="#/tools/rejoin">Try the rejoin and safety car tool.</a></p>` },
+
+{ id: 'trackposition', title: 'Track position and overtaking', blurb: 'Why being ahead is worth time',
+html: `
+<p class="lead">A faster car does not automatically pass. Following another car disturbs the airflow (dirty air), costing downforce and overheating tyres, so a car often needs a large pace advantage to overtake.</p>
+<ul>
+<li><b>Overtaking difficulty</b> varies by circuit: at a street circuit like Monaco a car may need several seconds per lap of pace advantage; at a circuit with long straights, much less.</li>
+<li>Where passing is hard, <b>track position is worth more than tyre advantage</b>, so teams favour fewer stops and protect position.</li>
+<li><b>Covering:</b> a leader often pits the lap after a rival to stop an undercut (or copies their strategy).</li>
+<li><b>Offset strategy:</b> a car further back runs a different tyre plan so that it has fresher tyres later, when it can pass more easily.</li>
+<li><b>Overtaking aids:</b> until 2025 DRS opened the rear wing for a car within one second; for 2026 the regulations change this (see 2026 regulations).</li>
+</ul>
+<div class="worked"><b>Worked example</b><br>You are 5 s behind a rival and 0.6 s/lap faster. You catch them in about 5 ÷ 0.6 ≈ 8.3, so 9 laps. If passing needs a 1.0 s/lap advantage at this circuit, you will be stuck behind once you catch them unless your advantage grows (for example, as their tyres degrade).</div>` },
+
+{ id: 'weather', title: 'Changing conditions', blurb: 'Slicks, intermediates and the crossover',
+html: `
+<p class="lead">On a wet or drying track, the key moment is the <b>crossover</b>: the point where one tyre type becomes faster than another.</p>
+<ul>
+<li>${T('W')} Full wets clear the most water; ${T('I')} intermediates suit a damp track; slicks are fastest once a dry line forms.</li>
+<li>As a track dries, lap times on intermediates stop improving and then rise as the tyres overheat on the dry surface. When the first car on slicks laps faster, the crossover has arrived.</li>
+<li><b>First mover advantage:</b> the first car to switch at the right moment gains the most, but switching too early risks crashing or losing time on a still-wet track.</li>
+<li>Pit when the expected gain over the remaining laps exceeds the pit loss plus the risk.</li>
+</ul>
+<div class="worked"><b>Worked example</b><br>12 laps remain. Slicks are expected to be 2.5 s/lap faster than worn intermediates after a 3 s slower out-lap; pit loss is 22 s. Gain = 12 × 2.5 − 3 = 27 s, which beats the 22 s pit loss by 5 s, so switch now. With only 8 laps left, gain = 8 × 2.5 − 3 = 17 s: not worth stopping unless the intermediates are about to fail.</div>` },
+
+{ id: 'probability', title: 'Probability and decisions', blurb: 'Expected value and risk',
+html: `
+<p class="lead">Strategy is decision-making under uncertainty. The core tool is expected value: probability × outcome, summed over what could happen.</p>
+<div class="formula">expected value = Σ probability of outcome × value of outcome</div>
+<div class="worked"><b>Worked example</b><br>Staying out gains you 2 positions if a safety car comes in the next 10 laps (probability 30%), but costs you 1 position if it doesn't. Expected value = 0.3 × (+2) + 0.7 × (−1) = −0.1 positions: on average, slightly worse to stay out.</div>
+<ul>
+<li><b>Risk appetite depends on the situation:</b> a car fighting for the championship may avoid a risky call with a slightly better average; a car in 15th with nothing to lose should take gambles with a chance of a big gain.</li>
+<li><b>At least one event:</b> if the chance of a safety car on any given lap were p, the chance of at least one in n laps is 1 − (1 − p)<sup>n</sup>.</li>
+<li><b>Monte Carlo:</b> simulate the race thousands of times with random events and count how often each strategy wins.</li>
+<li><b>Judge decisions, not outcomes:</b> a good call can lose to bad luck. Reviews ask whether the decision was right with the information available.</li>
+</ul>` },
+
+{ id: 'data', title: 'Data a strategist uses', blurb: 'From long runs to race traces',
+html: `
+<p class="lead">Strategy runs on data: timing, tyre wear, GPS positions and weather.</p>
+<table><tr><th>Data</th><th>What it tells you</th></tr>
+<tr><td>Long-run lap times from practice</td><td>Each compound's pace and degradation, after fuel correction and removing traffic laps</td></tr>
+<tr><td>Live timing and gaps</td><td>Who can undercut whom, who is catching whom</td></tr>
+<tr><td>GPS position of every car</td><td>Where you would rejoin after a stop; traffic</td></tr>
+<tr><td>Tyre temperatures and wear</td><td>Whether a stint can be extended</td></tr>
+<tr><td>Weather radar and track temperature</td><td>Rain timing, degradation changes</td></tr></table>
+<h2>Charts to be able to read</h2>
+<ul>
+<li><b>Lap time against tyre age:</b> the slope is the degradation rate (after fuel correction).</li>
+<li><b>Race trace (gap to a reference):</b> a line rising means losing time; steps show pit stops; converging lines show one car catching another.</li>
+<li><b>Stint chart:</b> coloured bars per car showing each tyre stint and pit lap.</li>
+</ul>
+<div class="worked"><b>Fitting degradation</b><br>Fuel-corrected laps on a stint: 92.10, 92.18, 92.27, 92.33, 92.42 s. The slope from first to last is (92.42 − 92.10) ÷ 4 = 0.08 s per lap. With noisy real data, use a least-squares line fit rather than just the first and last laps.</div>` },
+
+{ id: 'regs2026', title: '2026 regulations', blurb: 'What changed for strategy',
+html: `
+<p class="lead">2026 brought new chassis and power unit rules. These points are an outline: check the current FIA regulations before an interview, as details change.</p>
+<ul>
+<li><b>Power units:</b> a much larger share of power is electrical (roughly half), running on sustainable fuel. Harvesting and deploying energy across a lap becomes a strategic resource.</li>
+<li><b>Active aerodynamics:</b> movable front and rear wing elements switch between a high-downforce mode for corners and a low-drag mode for straights.</li>
+<li><b>Overtaking aid:</b> DRS is replaced by an extra electrical energy boost available to a car close behind.</li>
+<li><b>Smaller, lighter cars</b> with less downforce, which changes how cars follow each other and how tyres behave.</li>
+</ul>
+<div class="note">For strategy, the big new question is energy: when to harvest and when to deploy, how that interacts with attacking and defending, and how it changes pit-stop and tyre decisions.</div>` }
+];
+
+LEARN.forEach(t => {
+  Pages['learn/' + t.id] = {
+    group: 'Learn', title: t.title, blurb: t.blurb,
+    done: () => Store.get('learn.' + t.id, false),
+    render(el) {
+      el.innerHTML = `<div class="crumb">Learn</div><h1>${t.title}</h1>${t.html}
+        <div class="panel"><button class="btn" id="markRead">${Store.get('learn.' + t.id, false) ? 'Revised ✓' : 'Mark as revised'}</button></div>`;
+      el.querySelector('#markRead').onclick = e => { Store.set('learn.' + t.id, true); e.target.textContent = 'Revised ✓'; App.renderNav(); };
+    }
+  };
+});
+
+</script>
+<script>
+// Interactive tools.
+window.Pages = window.Pages || {};
+const UI = {
+  slider(id, label, min, max, step, value, unit = '') {
+    return `<label for="${id}">${label}</label><div class="slider"><input type="range" id="${id}" min="${min}" max="${max}" step="${step}" value="${value}"><output id="${id}-o">${value}${unit}</output></div>`;
+  },
+  bind(el, ids, fn, units = {}) {
+    ids.forEach(id => { const i = el.querySelector('#' + id); i.addEventListener('input', () => { el.querySelector('#' + id + '-o').textContent = i.value + (units[id] || ''); fn(); }); });
+    fn();
+  },
+  val: (el, id) => parseFloat(el.querySelector('#' + id).value),
+  stints(strategy, N) {
+    return `<div class="stints">${strategy.map(s => `<div class="stint ${s.c}" style="flex:${s.laps}" title="${Model.COMPOUNDS[s.c].name} ${s.laps} laps">${s.c} ${s.laps}</div>`).join('')}</div><div class="stint-label">${strategy.map(s => Model.COMPOUNDS[s.c].name + ' ' + s.laps).join(', then ')} (${N} laps)</div>`;
+  }
+};
+
+Pages['tools/undercut'] = {
+  group: 'Tools', title: 'Undercut calculator', blurb: 'Does pitting first get you ahead?',
+  render(el) {
+    el.innerHTML = `<div class="crumb">Tools</div><h1>Undercut calculator</h1>
+    <p class="lead">You are behind the rival and pit first. They stay out for some laps on old tyres. Does your fresh-tyre pace beat the gap?</p>
+    <div class="panel"><div class="row">
+      <div>${UI.slider('gap', 'Gap to car ahead (s)', 0, 5, 0.1, 1.2, ' s')}</div>
+      <div>${UI.slider('fresh', 'Fresh-tyre gain per lap (s)', 0, 3, 0.1, 1.8, ' s')}</div>
+      <div>${UI.slider('warm', 'Out-lap warm-up loss (s)', 0, 2, 0.1, 0.6, ' s')}</div>
+      <div>${UI.slider('k', 'Laps the rival stays out', 1, 5, 1, 1)}</div>
+    </div>
+    <div class="result" id="out"></div><div id="chart"></div></div>
+    <div class="note">Model: margin = laps × fresh-tyre gain − warm-up loss − gap. Pit loss cancels because both cars pay it. Ignored: traffic on your out-lap, the rival's own warm-up when they stop, and pit-stop execution, which can easily swing a second either way.</div>`;
+    UI.bind(el, ['gap', 'fresh', 'warm', 'k'], () => {
+      const g = UI.val(el, 'gap'), f = UI.val(el, 'fresh'), w = UI.val(el, 'warm'), k = UI.val(el, 'k');
+      const m = Model.undercut(g, f, w, k);
+      const v = m > 0.3 ? ['verdict-good', 'Undercut works'] : m < -0.3 ? ['verdict-bad', 'Undercut fails'] : ['verdict-warn', 'Too close to call: comes down to the stops'];
+      el.querySelector('#out').innerHTML = `<div class="big ${v[0]}">${Model.sgn(m)} s</div><div class="${v[0]}"><b>${v[1]}</b></div>
+        <dl class="kv"><dt>Gained on new tyres</dt><dd>${k} × ${f.toFixed(1)} = ${(k * f).toFixed(1)} s</dd><dt>Lost warming up</dt><dd>${w.toFixed(1)} s</dd><dt>Gap to close</dt><dd>${g.toFixed(1)} s</dd></dl>`;
+      const pts = [1, 2, 3, 4, 5, 6].map(x => ({ x, y: Model.undercut(g, f, w, x) }));
+      el.querySelector('#chart').innerHTML = Charts.line([{ points: pts, color: 'var(--accent)', name: 'margin' }, { points: [{ x: 1, y: 0 }, { x: 6, y: 0 }], color: 'var(--rule-strong)', dash: true }],
+        { xLabel: 'Laps the rival stays out', yLabel: 'Margin (s)', aria: 'Undercut margin against laps the rival stays out', h: 240 });
+    }, { gap: ' s', fresh: ' s', warm: ' s' });
+  }
+};
+
+Pages['tools/pitwindow'] = {
+  group: 'Tools', title: 'Pit window explorer', blurb: 'Best one-stop and two-stop',
+  render(el) {
+    const C = Model.COMPOUNDS;
+    el.innerHTML = `<div class="crumb">Tools</div><h1>Pit window explorer</h1>
+    <p class="lead">Change the race and tyre numbers to see when to stop, and whether one stop or two is faster. Times are relative to the fastest strategy.</p>
+    <div class="panel"><div class="row">
+      <div>${UI.slider('N', 'Race laps', 40, 75, 1, 57)}</div>
+      <div>${UI.slider('loss', 'Pit loss (s)', 14, 32, 0.5, 22, ' s')}</div>
+      <div>${UI.slider('scale', 'Degradation multiplier', 0.4, 2.5, 0.1, 1, '×')}</div>
+    </div>
+    <label><input type="checkbox" id="cliff" checked> Include the tyre cliff</label>
+    <table><tr><th>Compound</th><th class="num">Offset vs Soft (s)</th><th class="num">Degradation (s/lap per lap)</th><th class="num">Cliff after (laps)</th></tr>
+    ${['S', 'M', 'H'].map(c => `<tr><td>${T(c)} ${C[c].name}</td><td class="num">${C[c].offset.toFixed(1)}</td><td class="num" id="d${c}"></td><td class="num">${C[c].cliff}</td></tr>`).join('')}</table>
+    </div>
+    <div class="panel"><h3>Best strategies</h3><div id="best"></div><div id="chart"></div></div>
+    <div class="note">Model: lap time = compound offset + degradation × tyre age (+ cliff penalty past the cliff lap). At least two compounds must be used. Real races add traffic, safety cars and track evolution.</div>`;
+    const run = () => {
+      const N = UI.val(el, 'N'), loss = UI.val(el, 'loss'), sc = UI.val(el, 'scale'), cliff = el.querySelector('#cliff').checked;
+      const comps = {}; ['S', 'M', 'H'].forEach(c => { comps[c] = { ...C[c], deg: C[c].deg * sc, cliff: cliff ? C[c].cliff : null }; el.querySelector('#d' + c).textContent = comps[c].deg.toFixed(3); });
+      const cum = {}; ['S', 'M', 'H'].forEach(c => { cum[c] = [0]; for (let L = 1; L <= N; L++) cum[c][L] = cum[c][L - 1] + Model.lapOnTyre(comps[c], L - 1); });
+      const time = s => s.reduce((t, x) => t + cum[x.c][x.laps], 0) + loss * (s.length - 1);
+      const p = { pitLoss: loss, compounds: comps };
+      const one = Model.allOneStops(N, ['S', 'M', 'H']), two = Model.allTwoStops(N, ['S', 'M', 'H']);
+      let b1 = null, t1 = Infinity, b2 = null, t2 = Infinity;
+      one.forEach(s => { const t = time(s); if (t < t1) { t1 = t; b1 = s; } });
+      two.forEach(s => { const t = time(s); if (t < t2) { t2 = t; b2 = s; } });
+      const bestT = Math.min(t1, t2);
+      el.querySelector('#best').innerHTML = `
+        <p><b>Best one-stop</b> (${t1 - bestT < 0.05 ? 'fastest' : Model.sgn(t1 - bestT) + ' s'})</p>${UI.stints(b1, N)}
+        <p style="margin-top:14px"><b>Best two-stop</b> (${t2 - bestT < 0.05 ? 'fastest' : Model.sgn(t2 - bestT) + ' s'})</p>${UI.stints(b2, N)}
+        <p class="result">${t1 <= t2 ? `One stop is faster by <b>${(t2 - t1).toFixed(1)} s</b>.` : `Two stops are faster by <b>${(t1 - t2).toFixed(1)} s</b>.`}</p>`;
+      const pairs = [['M', 'H', 'var(--medium)'], ['H', 'M', 'var(--muted)'], ['S', 'H', 'var(--soft)']];
+      const series = pairs.map(([a, b, col]) => ({ name: `${a}→${b}`, color: col, points: Model.oneStopCurve(a, b, N, p).map(q => ({ x: q.x, y: time([{ c: a, laps: q.x }, { c: b, laps: N - q.x }]) - bestT })).filter(q => q.y < 60) }))
+        .filter(s => s.points.length > 1);
+      el.querySelector('#chart').innerHTML = `<h3>One-stop: race time against pit lap</h3>` + Charts.line(series, { xLabel: 'Pit lap', yLabel: 'Time vs best (s)', aria: 'One-stop race time against pit lap', h: 280 });
+      Store.tally('tools', true);
+    };
+    UI.bind(el, ['N', 'loss', 'scale'], run, { loss: ' s', scale: '×' });
+    el.querySelector('#cliff').addEventListener('change', run);
+  }
+};
+
+Pages['tools/rejoin'] = {
+  group: 'Tools', title: 'Rejoin and safety car', blurb: 'Where you come out, green vs SC',
+  render(el) {
+    el.innerHTML = `<div class="crumb">Tools</div><h1>Rejoin and safety car tool</h1>
+    <p class="lead">Enter the gaps to the cars behind you. See how many you would drop behind if you pitted now under green flag, and under a safety car.</p>
+    <div class="panel">
+      <label for="gaps">Gaps to cars behind, in seconds (comma separated)</label><input type="text" id="gaps" value="2.1, 6.5, 11.0, 17.8, 24.3, 31.0">
+      <div class="row"><div>${UI.slider('loss', 'Green-flag pit loss (s)', 14, 32, 0.5, 22, ' s')}</div>
+      <div>${UI.slider('f', 'SC pit loss as a share of green', 0.3, 0.8, 0.05, 0.5)}</div></div>
+      <div id="out"></div>
+    </div>
+    <div class="note">Simplification: under a safety car, the gaps behind you shrink as the field bunches up, so the real rejoin position can be worse than this shows. A rule of thumb is that a stop under a safety car costs roughly half the usual time, but the exact figure depends on the circuit and when the SC was deployed.</div>`;
+    const run = () => {
+      const gaps = el.querySelector('#gaps').value.split(',').map(s => parseFloat(s)).filter(x => !isNaN(x) && x >= 0).sort((a, b) => a - b);
+      const loss = UI.val(el, 'loss'), f = UI.val(el, 'f'), lsc = loss * f;
+      const g = Model.rejoin(gaps, loss), s = Model.rejoin(gaps, lsc);
+      el.querySelector('#out').innerHTML = `<table><tr><th></th><th class="num">Pit loss</th><th class="num">Places lost</th><th>Rejoin ahead of</th></tr>
+        <tr><td>Green flag</td><td class="num">${loss.toFixed(1)} s</td><td class="num"><b>${g}</b></td><td>${gaps.filter(x => x >= loss).map(x => x.toFixed(1) + ' s').join(', ') || 'nobody listed'}</td></tr>
+        <tr><td>Safety car</td><td class="num">${lsc.toFixed(1)} s</td><td class="num"><b>${s}</b></td><td>${gaps.filter(x => x >= lsc).map(x => x.toFixed(1) + ' s').join(', ') || 'nobody listed'}</td></tr></table>
+        <p class="result">Pitting under the safety car saves <b>${(loss - lsc).toFixed(1)} s</b> and <b>${g - s}</b> place${g - s === 1 ? '' : 's'} compared with a green-flag stop.</p>`;
+    };
+    UI.bind(el, ['loss', 'f'], run, { loss: ' s' });
+    el.querySelector('#gaps').addEventListener('input', run);
+  }
+};
+
+Pages['tools/degradation'] = {
+  group: 'Tools', title: 'Degradation plotter', blurb: 'Linear wear and the cliff',
+  render(el) {
+    el.innerHTML = `<div class="crumb">Tools</div><h1>Degradation plotter</h1>
+    <p class="lead">See how much time a stint loses to tyre wear, and how the cliff punishes running too long.</p>
+    <div class="panel"><div class="row">
+      <div>${UI.slider('deg', 'Degradation (s/lap per lap)', 0.02, 0.25, 0.01, 0.08, '')}</div>
+      <div>${UI.slider('cl', 'Cliff after lap', 8, 45, 1, 24)}</div>
+      <div>${UI.slider('cr', 'Cliff severity', 0, 0.2, 0.01, 0.06)}</div>
+      <div>${UI.slider('L', 'Stint length (laps)', 5, 45, 1, 28)}</div>
+    </div><div class="result" id="out"></div><div id="chart"></div></div>`;
+    UI.bind(el, ['deg', 'cl', 'cr', 'L'], () => {
+      const c = { offset: 0, deg: UI.val(el, 'deg'), cliff: UI.val(el, 'cl'), cliffRate: UI.val(el, 'cr') }, L = UI.val(el, 'L');
+      const pts = []; for (let a = 0; a < 45; a++) pts.push({ x: a + 1, y: Model.lapOnTyre(c, a) });
+      const lin = pts.map(p => ({ x: p.x, y: c.deg * (p.x - 1) }));
+      const total = Model.stintTime(c, L), linTotal = c.deg * L * (L - 1) / 2;
+      el.querySelector('#out').innerHTML = `<dl class="kv"><dt>Time lost to wear over ${L} laps</dt><dd>${total.toFixed(1)} s</dd><dt>Of which from the cliff</dt><dd>${(total - linTotal).toFixed(1)} s</dd><dt>Last lap vs a new tyre</dt><dd>${Model.lapOnTyre(c, L - 1).toFixed(2)} s slower</dd></dl>`;
+      el.querySelector('#chart').innerHTML = Charts.line([{ points: pts, color: 'var(--soft)', name: 'with cliff' }, { points: lin, color: 'var(--muted)', dash: true, name: 'linear only' }],
+        { xLabel: 'Tyre age (laps)', yLabel: 'Lap time vs new tyre (s)', mark: { x: L, y: Model.lapOnTyre(c, L - 1), label: 'stint end' }, aria: 'Lap time loss against tyre age', h: 280 });
+    });
+  }
+};
+
+</script>
+<script>
+// Randomised question generators. Each returns {q, ans, tol, unit, sol}.
+window.Pages = window.Pages || {};
+const R = Model.rnd, f1 = x => (+x).toFixed(1), f2 = x => (+x).toFixed(2), f3 = x => (+x).toFixed(3);
+
+const GEN = {
+  undercut: { name: 'Undercut margin', fn() {
+    const g = R(0.5, 3, 0.1), f = R(0.8, 2.5, 0.1), w = R(0.3, 1.2, 0.1), k = R(1, 3, 1);
+    const a = Model.undercut(g, f, w, k);
+    return { q: `You are <b>${f1(g)} s</b> behind and pit first. Fresh tyres are <b>${f1(f)} s/lap</b> faster than the rival's worn set, your out-lap costs <b>${f1(w)} s</b> of warm-up, and the rival stays out <b>${k}</b> more lap${k > 1 ? 's' : ''}. What is your margin when they rejoin? (positive = you are ahead)`,
+      ans: a, tol: 0.051, unit: 's', sol: `Margin = laps × gain − warm-up − gap = ${k} × ${f1(f)} − ${f1(w)} − ${f1(g)} = <b>${Model.sgn(a)} s</b>. ${a > 0 ? 'The undercut works.' : 'The undercut fails.'} Pit loss cancels because both cars pay it.` };
+  } },
+  rejoin: { name: 'Rejoin position', fn() {
+    let gaps = [], x = 0; for (let i = 0; i < 6; i++) { x += R(1.5, 7, 0.1); gaps.push(+x.toFixed(1)); }
+    const loss = R(18, 26, 0.5), n = Model.rejoin(gaps, loss);
+    return { q: `You are P4. The cars behind are <b>${gaps.map(f1).join(', ')} s</b> back. Pit loss is <b>${f1(loss)} s</b>. What position do you rejoin in? (ignore the cars ahead pitting)`,
+      ans: 4 + n, tol: 0.01, unit: '', sol: `Cars closer than the pit loss pass you: ${gaps.filter(g => g < loss).map(f1).join(', ') || 'none'}. That is ${n} car${n === 1 ? '' : 's'}, so you rejoin <b>P${4 + n}</b>.` };
+  } },
+  pitloss: { name: 'Pit loss from the lane', fn() {
+    const L = R(300, 450, 10), lim = Model.pick([80, 80, 80, 60]), v = R(160, 240, 10), s = R(2.0, 3.5, 0.1);
+    const a = Model.pitLossFromLane(L, lim, v, s);
+    return { q: `The pit lane is <b>${L} m</b> long with a <b>${lim} km/h</b> limit. Cars on track cover the same stretch at an average <b>${v} km/h</b>. The stop is stationary for <b>${f1(s)} s</b>. Estimate the pit loss, ignoring entry and exit braking.`,
+      ans: a, tol: 0.15, unit: 's', sol: `Lane: ${L} ÷ ${(lim / 3.6).toFixed(2)} m/s = ${f2(L / (lim / 3.6))} s. Track: ${L} ÷ ${(v / 3.6).toFixed(2)} m/s = ${f2(L / (v / 3.6))} s. Loss = ${f2(L / (lim / 3.6))} − ${f2(L / (v / 3.6))} + ${f1(s)} = <b>${f1(a)} s</b>.` };
+  } },
+  stops: { name: 'One stop or two', fn() {
+    const N = Model.pick([48, 54, 60, 66, 72]), d = R(0.04, 0.14, 0.01), loss = R(18, 26, 1);
+    const L1 = N / 2, L2 = N / 3, one = 2 * d * L1 * (L1 - 1) / 2 + loss, two = 3 * d * L2 * (L2 - 1) / 2 + 2 * loss, a = one - two;
+    return { q: `A <b>${N}</b>-lap race on one compound. Degradation is <b>${f2(d)} s/lap</b> per lap of tyre age, pit loss <b>${loss} s</b>. Compare equal-length stints: one stop (2 × ${L1} laps) against two stops (3 × ${L2} laps). How many seconds faster is the two-stop? (negative if slower)`,
+      ans: a, tol: 0.15, unit: 's', sol: `A stint of L laps loses d × L(L − 1) / 2.<br>One stop: 2 × ${f2(d)} × ${L1} × ${L1 - 1} / 2 + ${loss} = ${f1(one)} s.<br>Two stops: 3 × ${f2(d)} × ${L2} × ${L2 - 1} / 2 + 2 × ${loss} = ${f1(two)} s.<br>Two-stop advantage = <b>${Model.sgn(a)} s</b>, so ${a > 0 ? 'two stops' : 'one stop'} is faster.` };
+  } },
+  fuel: { name: 'Fuel correction', fn() {
+    const t = R(88, 96, 0.001), m = R(20, 100, 5), e = R(0.025, 0.035, 0.005), a = t - e * m;
+    return { q: `A lap of <b>${f3(t)} s</b> is set with <b>${m} kg</b> of fuel on board. The fuel effect is <b>${f3(e)} s per kg</b>. What is the fuel-corrected (empty-tank) lap time?`,
+      ans: a, tol: 0.006, unit: 's', sol: `Corrected = ${f3(t)} − ${f3(e)} × ${m} = ${f3(t)} − ${f3(e * m)} = <b>${f3(a)} s</b>.` };
+  } },
+  degslope: { name: 'Degradation from data', fn() {
+    const d = R(0.03, 0.15, 0.01), t0 = R(90, 95, 0.01), laps = [0, 1, 2, 3, 4].map(i => t0 + d * i);
+    return { q: `Fuel-corrected laps on one stint: <b>${laps.map(f2).join(', ')} s</b>. What is the degradation rate in s per lap?`,
+      ans: d, tol: 0.0051, unit: 's/lap', sol: `Slope = (${f2(laps[4])} − ${f2(laps[0])}) ÷ 4 = <b>${f2(d)} s per lap</b>. With noisy real data, fit a least-squares line instead of using two points.` };
+  } },
+  ev: { name: 'Expected value', fn() {
+    const p = R(0.1, 0.6, 0.05), X = R(1, 4, 1), Y = R(1, 3, 1), a = p * X - (1 - p) * Y;
+    return { q: `Staying out gains <b>${X}</b> position${X > 1 ? 's' : ''} if a safety car comes (probability <b>${Math.round(p * 100)}%</b>) but loses <b>${Y}</b> if it does not. What is the expected change in positions from staying out?`,
+      ans: a, tol: 0.011, unit: 'positions', sol: `EV = ${f2(p)} × (+${X}) + ${f2(1 - p)} × (−${Y}) = <b>${Model.sgn(a, 2)}</b>. ${a > 0 ? 'On average, stay out.' : 'On average, pit.'} Risk appetite still matters: what is your race position worth?` };
+  } },
+  atleast: { name: 'At least one event', fn() {
+    const p = R(0.01, 0.05, 0.005), n = R(10, 30, 5), a = 1 - Math.pow(1 - p, n);
+    return { q: `If the chance of a safety car on any lap were <b>${(p * 100).toFixed(1)}%</b>, independently each lap, what is the probability of at least one in the next <b>${n}</b> laps? (answer as a decimal)`,
+      ans: a, tol: 0.011, unit: '', sol: `P(at least one) = 1 − P(none) = 1 − (1 − ${f3(p)})<sup>${n}</sup> = 1 − ${f3(Math.pow(1 - p, n))} = <b>${f2(a)}</b>.` };
+  } },
+  catchup: { name: 'Laps to catch', fn() {
+    const g = R(2, 12, 0.5), d = R(0.2, 1.5, 0.1), a = Math.ceil(g / d - 1e-9);
+    return { q: `You are <b>${f1(g)} s</b> behind and lapping <b>${f1(d)} s/lap</b> faster. How many laps until you have caught them (gap at or below zero)?`,
+      ans: a, tol: 0.01, unit: 'laps', sol: `${f1(g)} ÷ ${f1(d)} = ${f2(g / d)}, so it takes <b>${a} laps</b> (round up to whole laps). Catching is not passing: you may need more pace to overtake.` };
+  } },
+  crossover: { name: 'Switching tyres', fn() {
+    const n = R(5, 20, 1), gain = R(1.5, 3.5, 0.1), out = R(2, 4, 0.5), loss = R(18, 24, 1), a = n * gain - out - loss;
+    return { q: `<b>${n}</b> laps remain on a drying track. Slicks will be <b>${f1(gain)} s/lap</b> faster than your intermediates, after an out-lap <b>${f1(out)} s</b> slower. Pit loss is <b>${loss} s</b>. What is the net gain from switching now? (negative = not worth it)`,
+      ans: a, tol: 0.051, unit: 's', sol: `Net = ${n} × ${f1(gain)} − ${f1(out)} − ${loss} = <b>${Model.sgn(a)} s</b>. ${a > 0 ? 'Switch.' : 'Stay on intermediates.'}` };
+  } }
+};
+
+function parseNum(s) {
+  s = String(s).trim().replace(/[−–]/g, '-').replace(/[^0-9.\-+eE]/g, m => (m === ',' ? '.' : ''));
+  if (/^P/i.test(s)) s = s.slice(1);
+  const v = parseFloat(s); return isNaN(v) ? null : v;
+}
+
+Pages['drills'] = {
+  group: 'Practise', title: 'Drills', blurb: 'Randomised strategy maths',
+  render(el) {
+    let topic = 'mixed', cur = null, key = null, session = { n: 0, ok: 0 };
+    el.innerHTML = `<div class="crumb">Practise</div><h1>Drills</h1>
+    <p class="lead">New numbers every time. Type your answer and check it; each one shows the worked solution.</p>
+    <div class="panel"><label for="topic">Topic</label><select id="topic"><option value="mixed">Mixed</option>${Object.entries(GEN).map(([k, g]) => `<option value="${k}">${g.name}</option>`).join('')}</select>
+    <div class="score" style="margin-top:10px"><span>This session: <b id="sc">0 / 0</b></span></div></div>
+    <div class="panel"><div id="q"></div>
+      <label for="ans">Your answer</label><input type="text" id="ans" inputmode="decimal" autocomplete="off">
+      <div><button class="btn" id="check">Check</button><button class="btn ghost" id="next">Next question</button></div>
+      <div id="fb"></div></div>`;
+    const q = el.querySelector('#q'), ans = el.querySelector('#ans'), fb = el.querySelector('#fb');
+    function next() {
+      key = topic === 'mixed' ? Model.pick(Object.keys(GEN)) : topic; cur = GEN[key].fn();
+      q.innerHTML = `<div class="stint-label">${GEN[key].name}</div><p style="font-size:1.08rem">${cur.q}</p>`;
+      ans.value = ''; fb.innerHTML = ''; el.querySelector('#check').disabled = false; ans.focus();
+    }
+    function check() {
+      const v = parseNum(ans.value); if (v === null) { fb.innerHTML = '<div class="feedback">Enter a number.</div>'; return; }
+      const ok = Math.abs(v - cur.ans) <= cur.tol; session.n++; if (ok) session.ok++;
+      Store.tally('drill.' + key, ok); el.querySelector('#sc').textContent = `${session.ok} / ${session.n}`;
+      fb.innerHTML = `<div class="feedback ${ok ? 'ok' : 'no'}"><b class="${ok ? 'verdict-good' : 'verdict-bad'}">${ok ? 'Correct.' : 'Not quite.'}</b> ${cur.sol}</div>`;
+      el.querySelector('#check').disabled = true;
+    }
+    el.querySelector('#topic').onchange = e => { topic = e.target.value; next(); };
+    el.querySelector('#check').onclick = check; el.querySelector('#next').onclick = next;
+    ans.addEventListener('keydown', e => { if (e.key === 'Enter') { el.querySelector('#check').disabled ? next() : check(); } });
+    next();
+  }
+};
+
+</script>
+<script>
+// Timed race calls. Numbers are illustrative; the reasoning is what matters.
+window.Pages = window.Pages || {};
+const SCEN = [
+{ title: 'Undercut threat', sit: ['Lap 21 of 57', 'You: P3 on ' + T('M') + ' Mediums, 20 laps old', 'P4 was 1.1 s behind and pitted at the end of lap 20 for Hards', 'New tyres: about 1.5 s/lap faster once warm; out-lap costs about 0.5 s'],
+  radio: 'They have boxed. What do we do?', options: ['Box this lap to cover', 'Stay out 3 laps to build a tyre offset', 'Stay out to lap 30 as planned'], correct: 0,
+  why: 'If you stop now, their margin is 1 × 1.5 − 0.5 − 1.1 = −0.1 s, so you stay ahead, just. Every extra lap you stay out gives them another 1.5 s: after two laps their margin is +1.4 s and you lose the place. Cover immediately.' },
+{ title: 'Safety car in the window', sit: ['Lap 34 of 57', 'You: P1 on ' + T('M') + ' Mediums, 34 laps old; planned to stop on lap 36 for Hards', 'P2 is 8 s behind on the same strategy', 'Safety car deployed; a stop now costs about 11 s instead of 22 s'],
+  radio: 'Safety car, safety car. Box or stay out?', options: ['Box now', 'Stay out and keep track position', 'Only box if P2 boxes'], correct: 0,
+  why: 'You need to stop within two laps anyway, so take the half-price stop. Staying out hands P2 a cheap stop while you still have to pay full price later. Waiting to see what P2 does is too late: you pass the pit entry first.' },
+{ title: 'Late safety car on a street circuit', sit: ['Lap 50 of 57, street circuit where overtaking is very hard', 'You: P5 on ' + T('H') + ' Hards, 15 laps old, still in good shape', 'Several cars around you are expected to pit for Softs', 'Safety car deployed'],
+  radio: 'Others might box for softs. Your call?', options: ['Stay out and keep track position', 'Box for Softs', 'Box for Mediums'], correct: 0,
+  why: 'Your tyres are healthy and there are only about five racing laps left after the restart. On a circuit where passing is very hard, track position is worth far more than a tyre advantage. Anyone who pits drops behind you and probably cannot get past.' },
+{ title: 'Late safety car on worn tyres', sit: ['Lap 45 of 57, a circuit with good overtaking', 'You: P6 on ' + T('M') + ' Mediums, 35 laps old and close to the cliff', 'Safety car deployed; stop costs about 11 s, and the cars behind are 9 s, 15 s and 30 s back'],
+  radio: 'Tyres are going off. Box?', options: ['Box for Softs', 'Stay out', 'Box for Hards'], correct: 0,
+  why: 'Your tyres are about to fall off a cliff with 12 laps left, and passing is possible here. A cheap 11 s stop costs one place (the car 9 s behind), and Softs for 12 laps give you the pace to take it back and more. Hards would be too slow to warm up and too slow for a short sprint.' },
+{ title: 'Virtual safety car', sit: ['Lap 22 of 52', 'You: P4 on ' + T('M') + ' Mediums, 22 laps old; plan is to stop on lap 26 for Hards', 'Virtual safety car deployed: a stop now saves roughly 8 s'],
+  radio: 'VSC. Do we box?', options: ['Box now', 'Stay out, stick to lap 26', 'Wait a lap to see how long the VSC lasts'], correct: 0,
+  why: 'You are only four laps from your planned stop, so pulling it forward costs little tyre life and saves about 8 s. VSC periods can end at any moment, so waiting a lap risks losing the saving entirely.' },
+{ title: 'Rain on the way', sit: ['Lap 40 of 55', 'You: P7 on ' + T('M') + ' slicks, 10 laps old', 'Light drizzle now; radar shows heavier rain in about 3 laps that will last to the end', 'Slick lap times are only 0.5 s off so far'],
+  radio: 'Drizzle starting. Inters now?', options: ['Stay out until slick lap times fall past the intermediate crossover, likely in 2 to 3 laps', 'Box for Intermediates now', 'Box for Full wets now'], correct: 0,
+  why: 'Right now slicks are still faster than intermediates would be on a nearly dry track, and a stop costs a pit loss. Stay out and pit at the crossover, when slicks become slower than inters would be. Pitting now loses time on the wrong tyre; full wets are for standing water, not heavier rain still to come.' },
+{ title: 'Drying track', sit: ['Lap 30 of 48', 'You: P5 on ' + T('I') + ' Intermediates, overheating as a dry line forms', 'The first car to switch to slicks has just set a lap 1.5 s faster than your current pace', '18 laps remain'],
+  radio: 'Someone is quick on slicks. Your call?', options: ['Box for slicks now', 'Stay out until more cars switch', 'Stay on inters to the end'], correct: 0,
+  why: 'The crossover has passed: slicks are already faster, and the gap grows as the track dries. With 18 laps left the gain is well over a pit loss, and every lap you wait the early movers pull away. Waiting for others to switch is how you lose places.' },
+{ title: 'Double stack', sit: ['Lap 28 of 56', 'Your two cars are P4 and P5, 0.8 s apart; both need to stop', 'Safety car deployed; a stop costs about 11 s', 'P6 is 20 s behind your second car'],
+  radio: 'Both cars need tyres. Plan?', options: ['Box both (double stack)', 'Box the lead car only', 'Box neither'], correct: 0,
+  why: 'The second car waits a few seconds behind the first, but it still rejoins well ahead of P6, 20 s back. Two half-price stops are worth far more than avoiding a short wait. Leaving one car out means it must pay a full-price stop later.' },
+{ title: 'Red flag', sit: ['Lap 30 of 60', 'You: P3 on ' + T('M') + ' Mediums, 30 laps old; you have not stopped yet', 'Several rivals stopped under green in the last 5 laps', 'Red flag: cars return to the pit lane and teams may change tyres'],
+  radio: 'Red flag. What tyres for the restart?', options: ['Hards to the end', 'Softs to the end', 'Fresh Mediums to the end'], correct: 0,
+  why: 'The red flag gives you a free tyre change, so you have just gained the full pit loss on the rivals who stopped under green. Hards can comfortably do the 30 laps remaining and satisfy the two-compound rule. Softs and Mediums risk the cliff over 30 laps.' },
+{ title: 'Overcut chance', sit: ['Lap 25 of 58, cool track temperature', 'A rival 1.5 s ahead has just pitted for ' + T('H') + ' Hards, which take about 2 laps to warm up here', 'They have rejoined in traffic', 'Your ' + T('M') + ' Mediums are still only 0.3 s/lap off a warmed-up new tyre'],
+  radio: 'They boxed. Cover them?', options: ['Stay out 3 to 4 laps and push (overcut)', 'Box this lap to cover', 'Box now for Softs'], correct: 0,
+  why: 'The overcut works when old tyres are still fast and the pitting car is slow on cold tyres or stuck in traffic. They lose time warming the Hards and in traffic, while you lose only 0.3 s per lap. Push in clear air, then stop and rejoin ahead.' },
+{ title: 'Defend or attack?', sit: ['Lap 52 of 57', 'You: P2, 3.0 s ahead of P3', 'P3 is 1.2 s/lap faster on fresher tyres', 'Pit loss is 22 s; overtaking is moderately difficult'],
+  radio: 'P3 is coming. Box for softs to attack?', options: ['Stay out and defend', 'Box for Softs', 'Box for Mediums'], correct: 0,
+  why: 'P3 needs 3.0 ÷ 1.2 = 2.5 laps to catch you, leaving about two laps to pass on a circuit where that is hard. A stop costs 22 s and drops you behind P3 for certain. Staying out gives you the better chance of keeping P2.' },
+{ title: 'Championship decider', sit: ['Final race of the season; you lead the championship by 10 points', 'You are P3; your title rival is P5', 'Option: an off-strategy gamble that wins if a safety car comes, but drops you to around P9 if not'],
+  radio: 'Do we gamble for the win?', options: ['No: run the safe strategy and bank P3', 'Yes: gamble for the win', 'Gamble only if the rival gambles'], correct: 0,
+  why: 'Finishing P3 ahead of your rival wins you the title. The gamble raises your average result slightly but adds the risk of finishing behind them. When you are protecting a lead, choose the low-risk option even if its average is slightly worse.' },
+{ title: 'More degradation than expected', sit: ['Lap 18 of 56', 'Plan: one stop, Mediums to lap 26 then Hards', 'Your Mediums are degrading about twice as fast as predicted and show signs of a cliff soon', 'Hards are also expected to degrade more than planned'],
+  radio: 'Tyres are worse than the model. Change plan?', options: ['Switch to a two-stop: pit within a couple of laps', 'Stick to the one-stop and manage the tyres', 'Pit now for Softs to the end'], correct: 0,
+  why: 'Higher degradation shifts the balance towards more stops: each lap on worn tyres now costs more than the extra pit loss. A 30-lap stint on Hards would also be at risk. Softs cannot last 38 laps. Update the plan to match the data.' }
+];
+
+Pages['scenarios'] = {
+  group: 'Practise', title: 'Race calls', blurb: 'Timed strategy decisions',
+  render(el) {
+    const order = Model.shuffle(SCEN.map((_, i) => i)); let idx = 0, timerId = null, score = 0, done = 0;
+    el.innerHTML = `<div class="crumb">Practise</div><h1>Race calls</h1>
+    <p class="lead">A race situation, a question from the pit wall and 30 seconds to decide. Then see the reasoning. Answer out loud first: interviews reward structured thinking, not just the right call.</p>
+    <div class="score"><span>Session: <b id="sc">0 / 0</b></span><span>Best ever: <b>${Store.get('scenBest', 0)}</b> of ${SCEN.length}</span></div>
+    <div class="panel" id="box"></div>`;
+    const box = el.querySelector('#box');
+    function show() {
+      clearInterval(timerId);
+      if (idx >= order.length) {
+        Store.set('scenBest', Math.max(Store.get('scenBest', 0), score));
+        box.innerHTML = `<h2 style="margin-top:0">Round complete</h2><p class="big">${score} / ${order.length}</p><button class="btn" id="again">Play again</button>`;
+        box.querySelector('#again').onclick = () => Pages['scenarios'].render(el); return;
+      }
+      const s = SCEN[order[idx]]; let left = 30;
+      const opts = Model.shuffle(s.options.map((t, i) => ({ t, i })));
+      box.innerHTML = `<div class="stint-label">Call ${idx + 1} of ${order.length}</div><h2 style="margin-top:4px">${s.title}</h2>
+        <ul>${s.sit.map(x => `<li>${x}</li>`).join('')}</ul>
+        <div class="radio">"${s.radio}"</div>
+        <div class="timer" id="tm"><div style="width:100%"></div></div><div class="stint-label" id="tl">30 s</div>
+        <div class="choices">${opts.map(o => `<button class="choice" data-i="${o.i}">${o.t}</button>`).join('')}</div><div id="fb"></div>`;
+      const bar = box.querySelector('#tm>div');
+      timerId = setInterval(() => { left -= 0.25; bar.style.width = (left / 30 * 100) + '%'; box.querySelector('#tl').textContent = Math.ceil(left) + ' s'; if (left <= 8) box.querySelector('#tm').classList.add('low'); if (left <= 0) answer(-1); }, 250);
+      box.querySelectorAll('.choice').forEach(b => b.onclick = () => answer(+b.dataset.i));
+      function answer(i) {
+        clearInterval(timerId); const ok = i === s.correct; done++; if (ok) score++; Store.tally('scenarios', ok);
+        el.querySelector('#sc').textContent = `${score} / ${done}`;
+        box.querySelectorAll('.choice').forEach(b => { b.disabled = true; if (+b.dataset.i === s.correct) b.classList.add('right'); else if (+b.dataset.i === i) b.classList.add('wrong'); });
+        box.querySelector('#fb').innerHTML = `<div class="feedback ${ok ? 'ok' : 'no'}"><b class="${ok ? 'verdict-good' : 'verdict-bad'}">${i === -1 ? 'Out of time.' : ok ? 'Good call.' : 'Not the best call.'}</b> ${s.why}</div><button class="btn" id="nx">Next call</button>`;
+        box.querySelector('#nx').onclick = () => { idx++; show(); };
+      }
+    }
+    show();
+    App.onLeave(() => clearInterval(timerId));
+  }
+};
+
+</script>
+<script>
+// 60-second mental arithmetic sprint with strategy-flavoured numbers.
+window.Pages = window.Pages || {};
+const SPRINT_GEN = [
+  () => { const a = 90 + Model.rnd(0, 5, 0.001), b = a - Model.rnd(0.05, 0.9, 0.001); return { q: `${Model.fmtTime(a)} − ${Model.fmtTime(b)} = ? s`, a: +(a - b).toFixed(3) }; },
+  () => { const d = Model.rnd(0.02, 0.15, 0.01), n = Model.rnd(5, 25, 1); return { q: `${d.toFixed(2)} s/lap × ${n} laps = ? s`, a: +(d * n).toFixed(3) }; },
+  () => { const g = Model.rnd(1, 6, 0.1), c = Model.rnd(0.1, 0.8, 0.1), n = Model.rnd(2, 6, 1); return { q: `Gap ${g.toFixed(1)} s, closing ${c.toFixed(1)} s/lap. Gap after ${n} laps? (negative = passed)`, a: +(g - c * n).toFixed(3) }; },
+  () => { const v = 36 * Model.rnd(3, 9, 1); return { q: `${v} km/h = ? m/s`, a: v / 3.6 }; },
+  () => { const p = Model.pick([10, 20, 25, 30, 40, 50, 60, 75]), x = Model.rnd(12, 30, 2); return { q: `${p}% of ${x} s = ? s`, a: +(p / 100 * x).toFixed(3) }; },
+  () => { const n = Model.rnd(5, 30, 1), t = Model.rnd(0.2, 0.9, 0.1); return { q: `${n} laps × ${t.toFixed(1)} s faster = ? s gained`, a: +(n * t).toFixed(3) }; },
+  () => { const g = Model.rnd(10, 30, 0.5), l = Model.rnd(18, 25, 1); return { q: `Gap behind ${g.toFixed(1)} s, pit loss ${l} s. Margin after stopping? (negative = they pass)`, a: +(g - l).toFixed(3) }; }
+];
+
+Pages['sprint'] = {
+  group: 'Practise', title: 'Mental maths sprint', blurb: '60 seconds of quick sums',
+  render(el) {
+    let timerId = null;
+    el.innerHTML = `<div class="crumb">Practise</div><h1>Mental maths sprint</h1>
+    <p class="lead">As many as you can in 60 seconds, without a calculator. Strategists do this kind of arithmetic live on the pit wall.</p>
+    <div class="score"><span>Best: <b>${Store.get('sprintBest', 0)}</b></span></div>
+    <div class="panel" id="box"><button class="btn" id="go">Start</button></div>`;
+    const box = el.querySelector('#box');
+    box.querySelector('#go').onclick = start;
+    function start() {
+      let left = 60, score = 0, cur; const missed = [];
+      box.innerHTML = `<div class="timer" id="tm"><div style="width:100%"></div></div><div class="score"><span>Time: <b id="t">60</b> s</span><span>Score: <b id="s">0</b></span></div>
+        <p class="big" id="q" style="font-size:1.9rem;margin:18px 0"></p><input type="text" id="a" inputmode="decimal" autocomplete="off" aria-label="Answer"><div class="stint-label">Press Enter to submit. Answers within 0.01 count.</div>`;
+      const qEl = box.querySelector('#q'), a = box.querySelector('#a');
+      const next = () => { cur = Model.pick(SPRINT_GEN)(); qEl.textContent = cur.q; a.value = ''; a.focus(); };
+      a.addEventListener('keydown', e => {
+        if (e.key !== 'Enter') return; const v = parseNum(a.value); if (v === null) return;
+        if (Math.abs(v - cur.a) <= 0.0101) { score++; box.querySelector('#s').textContent = score; } else missed.push(`${cur.q} → ${+cur.a.toFixed(3)}`);
+        next();
+      });
+      next();
+      timerId = setInterval(() => {
+        left -= 0.25; box.querySelector('#tm>div').style.width = (left / 60 * 100) + '%'; box.querySelector('#t').textContent = Math.ceil(left);
+        if (left <= 10) box.querySelector('#tm').classList.add('low');
+        if (left <= 0) {
+          clearInterval(timerId); Store.set('sprintBest', Math.max(Store.get('sprintBest', 0), score)); Store.tally('sprint', true);
+          box.innerHTML = `<p class="big">${score}</p><p>correct in 60 seconds.</p>${missed.length ? `<h3>Missed</h3><ul>${missed.map(m => `<li>${m}</li>`).join('')}</ul>` : ''}<button class="btn" id="go">Go again</button>`;
+          box.querySelector('#go').onclick = start;
+        }
+      }, 250);
+    }
+    App.onLeave(() => clearInterval(timerId));
+  }
+};
+
+</script>
+<script>
+// Flashcards with simple spaced repetition (Leitner boxes 1-5).
+window.Pages = window.Pages || {};
+const CARDS = [
+ ['What is the undercut?', 'Pitting before a rival so your fresh tyres gain time while they are still on worn ones, coming out ahead when they stop.'],
+ ['What is the overcut?', 'Staying out longer than a rival and gaining while they are slow on cold new tyres or stuck in traffic.'],
+ ['Undercut margin formula', 'Laps of advantage × fresh-tyre gain per lap − out-lap warm-up loss − gap. Pit loss cancels.'],
+ ['What is pit loss?', 'Total time a stop costs versus staying on track: pit lane at the speed limit, stationary time, entry and exit.'],
+ ['Why is a stop under a safety car cheaper?', 'The whole field is slow, so the time lost in the pit lane relative to cars on track is much smaller, roughly half (illustrative).'],
+ ['Safety car vs virtual safety car', 'SC: cars queue behind the safety car, gaps disappear. VSC: every car slows to a set delta, gaps are kept, smaller pit saving.'],
+ ['What can teams do under a red flag?', 'Change tyres while stopped: effectively a free stop for everyone.'],
+ ['Dry race tyre rule', 'Each car must use at least two different dry compounds.'],
+ ['What is the tyre cliff?', 'The point where a worn tyre suddenly loses a lot of grip, so lap times rise sharply.'],
+ ['Graining', 'Rubber tears and rolls up on the tyre surface, often on a cold or green track; can clear after a few laps.'],
+ ['Blistering', 'Overheating inside the tyre makes pieces of rubber break away; usually permanent.'],
+ ['Thermal degradation', 'Loss of grip from the tyre overheating, often from sliding or following another car; can be managed.'],
+ ['Fuel effect rule of thumb', 'Roughly 0.03 s per lap per kg of fuel (illustrative; depends on circuit and car).'],
+ ['Fuel-corrected lap time', 'Measured lap time − fuel effect × fuel mass on board. Needed to see true tyre degradation.'],
+ ['Degradation loss over a stint of L laps', 'With linear degradation d: d × L(L − 1) / 2 seconds.'],
+ ['When do more stops pay off?', 'When degradation is high and pit loss low: shorter stints save more time than the extra stop costs.'],
+ ['When is track position king?', 'At circuits where overtaking is hard: fewer stops, protect position.'],
+ ['What is dirty air?', 'Turbulent wake behind a car that costs the following car downforce and overheats its tyres.'],
+ ['What is the crossover?', 'The point where one tyre type becomes faster than another, e.g. slicks overtaking intermediates on a drying track.'],
+ ['Expected value', 'Σ probability × outcome over all possibilities.'],
+ ['P(at least one event in n tries)', '1 − (1 − p)^n, if each try is independent with probability p.'],
+ ['Monte Carlo simulation', 'Simulating the race many times with random events (safety cars, stop times, pace) to see the spread of outcomes for each strategy.'],
+ ['Covering a rival', 'Pitting the lap after them (or copying their strategy) to stop an undercut or offset.'],
+ ['Offset strategy', 'Running a different tyre plan from rivals to have fresher tyres when it matters, e.g. late in the race.'],
+ ['Double stack', 'Both team cars pitting on the same lap; the second waits for the first.'],
+ ['Pit loss estimate from the lane', 'Lane length ÷ speed limit − lane length ÷ track speed + stationary time.'],
+ ['Race trace', 'Each car\'s gap to a reference over the race: rising = losing time, steps = pit stops.'],
+ ['Judge the decision, not the outcome', 'A good call can lose to bad luck; review whether the decision was right with the information available.'],
+ ['Risk appetite', 'Protecting a result favours low-risk calls; chasing from behind favours gambles with big upside.'],
+ ['2026 overtaking aid', 'DRS replaced by an extra electrical energy boost for a car close behind (check the latest regulations).']
+];
+
+Pages['cards'] = {
+  group: 'Practise', title: 'Flashcards', blurb: 'Spaced repetition on key ideas',
+  render(el) {
+    const box = i => Store.get('cards.' + i, 1);
+    function pickCard() {
+      const weights = CARDS.map((_, i) => 1 / box(i) ** 2), sum = weights.reduce((a, b) => a + b, 0);
+      let r = Math.random() * sum; for (let i = 0; i < CARDS.length; i++) { r -= weights[i]; if (r <= 0) return i; } return 0;
+    }
+    function counts() { const c = [0, 0, 0, 0, 0]; CARDS.forEach((_, i) => c[box(i) - 1]++); return c; }
+    let cur = pickCard();
+    function draw() {
+      const c = counts();
+      el.innerHTML = `<div class="crumb">Practise</div><h1>Flashcards</h1>
+      <p class="lead">Say the answer out loud, then reveal. Cards you know move up a box and come back less often; cards you miss go back to box 1.</p>
+      <div class="boxes">${c.map((n, i) => `<span>Box ${i + 1}: <b>${n}</b></span>`).join('')}</div>
+      <div class="panel flash"><div><b>${CARDS[cur][0]}</b></div><div class="back" id="back" hidden>${CARDS[cur][1]}</div></div>
+      <div id="ctl"><button class="btn" id="rev">Reveal</button></div>`;
+      el.querySelector('#rev').onclick = () => {
+        el.querySelector('#back').hidden = false;
+        el.querySelector('#ctl').innerHTML = `<button class="btn" id="yes">Got it</button><button class="btn ghost" id="no">Missed it</button>`;
+        el.querySelector('#yes').onclick = () => { Store.set('cards.' + cur, Math.min(5, box(cur) + 1)); Store.tally('cards', true); let n; do { n = pickCard(); } while (n === cur && CARDS.length > 1); cur = n; draw(); };
+        el.querySelector('#no').onclick = () => { Store.set('cards.' + cur, 1); Store.tally('cards', false); let n; do { n = pickCard(); } while (n === cur && CARDS.length > 1); cur = n; draw(); };
+      };
+    }
+    draw();
+  }
+};
+
+</script>
+<script>
+// Interview practice: technical and behavioural banks, a timed mock interview, and questions to ask.
+window.Pages = window.Pages || {};
+const TECH = [
+ ['Explain the undercut.', 'Pit before the car ahead; on fresh tyres you lap faster while they are on worn ones. If the time you gain over those laps, minus your out-lap warm-up, is bigger than the gap, you come out ahead when they stop. It works best with high degradation, quick-warming tyres and clear air.'],
+ ['When would the overcut work instead?', 'When degradation is low so old tyres are still quick, when new tyres are slow to warm up (cold track, hard compound), or when the car that pits first rejoins in traffic.'],
+ ['How do you decide between one stop and two?', 'Compare the extra pit loss with the degradation time saved by shorter stints. High degradation and low pit loss favour two stops; low degradation, high pit loss and circuits where overtaking is hard favour one stop. I would check it in a race simulation and see how robust each plan is to safety cars.'],
+ ['A safety car comes out. Talk me through your decision.', 'First: are we in or near our pit window, and can the next tyre reach the end? Then: what will the cars around us do, and can we pass them on track if we lose places? How many laps are left? Is a double stack needed? If we need to stop soon anyway, a stop under the safety car is usually right because it costs about half the time.'],
+ ['How would you measure tyre degradation from practice?', 'Take long-run laps, remove in-laps, out-laps and laps in traffic, fuel-correct them, and fit a line of lap time against tyre age for each compound. The slope is the degradation rate; look for a cliff where the slope suddenly increases.'],
+ ['What is fuel correction and why does it matter?', 'Cars get faster as fuel burns, roughly 0.03 s per lap per kilogram as a rule of thumb. Without correcting for it, fuel burn hides tyre degradation, so you would underestimate how fast the tyres are wearing.'],
+ ['What makes up pit loss?', 'Time in the pit lane at the speed limit compared with cars at full speed on track, the stationary time, and the entry and exit. It is usually around 18 to 25 s and varies a lot by circuit; under a safety car it is much smaller.'],
+ ['Why is track position valuable?', 'Following another car costs downforce and overheats tyres, so a faster car may not get past. At circuits where passing is hard, being ahead is worth more than having better tyres.'],
+ ['How would you use Monte Carlo simulation in strategy?', 'Run the race thousands of times with random safety cars, pit-stop times and pace variation. Instead of one expected time per strategy you get a distribution, so you can pick plans that win most often or that are robust, not just fastest on average.'],
+ ['A rival is 1.2 s behind and pits. What do you do?', 'Estimate their undercut: fresh-tyre gain per lap times the laps we stay out, minus their warm-up, minus the gap. If that is close to or above zero we should cover by pitting next lap, as long as we would not rejoin in traffic.'],
+ ['How do you handle a drying track?', 'Watch for the crossover: the first car on slicks setting faster laps is the signal. Switch when the expected gain over the remaining laps beats the pit loss and the risk. Early movers gain the most if the timing is right.'],
+ ['What data would you look at after a race?', 'Predicted versus actual degradation, pit loss and stop times, gaps at each decision point, and what rivals did. Then review each call: was it right with what we knew at the time? Then update the models.'],
+ ['What is expected value and how does it apply?', 'Probability times outcome summed over the possibilities. For example, staying out might gain two places if a safety car comes but lose one if not; the expected value tells you which is better on average, then risk appetite adjusts for the situation.'],
+ ['How does championship position change your strategy?', 'A championship leader should lower risk and protect results; someone needing a big swing should take gambles with high upside, even if their average is slightly worse.'],
+ ['What changed for strategy in 2026?', 'In outline: a much bigger electrical share of power, so energy harvesting and deployment become strategic; active aerodynamics; and DRS replaced by an extra energy boost for a car close behind. I would check the current regulations for the detail.'],
+ ['What would you do if the model disagrees with what the drivers say?', 'Treat it as a correlation problem: check the data first (fuel correction, traffic, sensor issues), then which model input could be wrong, such as the degradation rate. Driver feedback often shows things the timing does not, like a tyre about to go off.'],
+ ['What is a race trace?', 'Each car\'s gap to a reference plotted lap by lap: a rising line means losing time, steps show pit stops, and converging lines show one car catching another.'],
+ ['How would you prepare plan B and plan C?', 'Before the race, agree reactions to likely events: safety cars in different lap windows, higher degradation than expected, rain. Then in the race the call is quick because the thinking is already done.']
+];
+const BEHAV = [
+ ['Tell me about a time you made a decision under pressure.', 'They want: calm, structured thinking. Use STAR: the situation and time pressure, what you had to decide, how you weighed options, the result, and what you learned.'],
+ ['Tell me about a time you made a mistake.', 'They want honesty and learning. Pick a real mistake, own it, explain how you caught or fixed it, and what you now do differently.'],
+ ['Tell me about working in a team.', 'They want collaboration and communication. Show how you divided work, handled disagreement and kept the team moving.'],
+ ['Tell me about a time you had to explain something complex simply.', 'Strategists brief engineers and drivers in seconds. Show how you found the key point and tailored it to the listener.'],
+ ['Tell me about a time you changed your mind because of data.', 'They want evidence-based thinking. Describe your initial view, the data that challenged it and how you updated.'],
+ ['Tell me about a time something did not go to plan.', 'They want adaptability. Show how you reacted quickly, what you tried, and the outcome.'],
+ ['Why race strategy?', 'Link it to what you enjoy: fast decisions with incomplete information, probability, data, and the competitive impact of a single call.'],
+ ['Why this team?', 'Be specific: something about the team\'s situation, ambitions or people, and why your skills fit that moment.'],
+ ['What is your biggest weakness?', 'A real but fixable weakness, plus the concrete steps you have taken to improve it.'],
+ ['Where do you see yourself in five years?', 'Show commitment to the field and growth: owning analysis or decisions that matter on race weekends.']
+];
+const ASK = ['What does a placement student typically work on during a race weekend versus the off-season?', 'How does the strategy group prepare its plans before an event?', 'Which tools and languages does the team use day to day?', 'How is the race simulation correlated against what happens in races?', 'What makes placement students successful in this team?', 'What are the next stages of the process, and roughly when?'];
+
+function qaList(list) {
+  return list.map(([q, a], i) => `<details class="panel"><summary><b>${q}</b></summary><p style="margin-top:10px">${a}</p></details>`).join('');
+}
+Pages['interview/technical'] = { group: 'Interview', title: 'Technical questions', blurb: 'Model answers to strategy questions',
+  render(el) { el.innerHTML = `<div class="crumb">Interview</div><h1>Technical questions</h1><p class="lead">Try each out loud before opening the model answer. Aim for a short answer first, then detail if asked.</p>${qaList(TECH)}`; } };
+Pages['interview/behavioural'] = { group: 'Interview', title: 'Behavioural questions', blurb: 'What they look for, with STAR',
+  render(el) { el.innerHTML = `<div class="crumb">Interview</div><h1>Behavioural questions</h1>
+    <p class="lead">Prepare one real story for each, using STAR: <b>Situation</b>, <b>Task</b>, <b>Action</b>, <b>Result</b>, plus what you learned. Keep your own stories in your private notes, not on this site.</p>${qaList(BEHAV)}`; } };
+Pages['interview/ask'] = { group: 'Interview', title: 'Questions to ask', blurb: 'Good questions for the end',
+  render(el) { el.innerHTML = `<div class="crumb">Interview</div><h1>Questions to ask</h1><p class="lead">Pick two or three. Ask recruiters about the process and support; ask engineers about the work.</p><div class="panel"><ul>${ASK.map(a => `<li>${a}</li>`).join('')}</ul></div>`; } };
+
+Pages['interview/mock'] = {
+  group: 'Interview', title: 'Mock interview', blurb: 'Random question, 2-minute timer',
+  render(el) {
+    let timerId = null;
+    const all = TECH.map(x => ['Technical', ...x]).concat(BEHAV.map(x => ['Behavioural', ...x]));
+    function ask() {
+      clearInterval(timerId);
+      const [kind, q, a] = Model.pick(all); let left = 120;
+      el.innerHTML = `<div class="crumb">Interview</div><h1>Mock interview</h1>
+      <p class="lead">Answer out loud as if the interviewer just asked. You have two minutes. Then compare with the model answer and rate yourself.</p>
+      <div class="panel"><div class="stint-label">${kind}</div><h2 style="margin-top:4px">${q}</h2>
+      <div class="timer" id="tm"><div style="width:100%"></div></div><div class="stint-label" id="tl">2:00</div>
+      <label for="notes">Notes (optional, not saved)</label><textarea id="notes"></textarea>
+      <div><button class="btn" id="done">Finish and compare</button></div><div id="fb"></div></div>`;
+      const bar = el.querySelector('#tm>div');
+      timerId = setInterval(() => { left -= 1; bar.style.width = (left / 120 * 100) + '%'; el.querySelector('#tl').textContent = `${Math.floor(left / 60)}:${String(left % 60).padStart(2, '0')}`; if (left <= 20) el.querySelector('#tm').classList.add('low'); if (left <= 0) finish(); }, 1000);
+      el.querySelector('#done').onclick = finish;
+      function finish() {
+        clearInterval(timerId); el.querySelector('#done').disabled = true;
+        el.querySelector('#fb').innerHTML = `<div class="feedback"><b>${kind === 'Technical' ? 'Model answer' : 'What they look for'}:</b> ${a}</div>
+          <p style="margin-top:12px"><b>How did it go?</b></p>
+          <button class="btn ghost" data-r="1">Struggled</button><button class="btn ghost" data-r="2">Okay</button><button class="btn ghost" data-r="3">Strong</button>
+          <div><button class="btn" id="again">Next question</button></div>`;
+        el.querySelectorAll('[data-r]').forEach(b => b.onclick = () => { Store.tally('mock', +b.dataset.r >= 2); el.querySelectorAll('[data-r]').forEach(x => x.disabled = true); b.textContent += ' ✓'; });
+        el.querySelector('#again').onclick = ask;
+      }
+    }
+    ask();
+    App.onLeave(() => clearInterval(timerId));
+  }
+};
+
+</script>
+<script>
+// Router, navigation, home and progress pages.
+const App = (() => {
+  const main = document.getElementById('main'), nav = document.getElementById('nav');
+  let leaveFns = [];
+  const GROUPS = [
+    ['Start', ['', 'progress']],
+    ['Learn', LEARN.map(t => 'learn/' + t.id)],
+    ['Tools', ['tools/undercut', 'tools/pitwindow', 'tools/rejoin', 'tools/degradation']],
+    ['Practise', ['drills', 'scenarios', 'sprint', 'cards']],
+    ['Interview', ['interview/technical', 'interview/behavioural', 'interview/mock', 'interview/ask']]
+  ];
+
+  Pages[''] = { title: 'Home', render: home };
+  Pages['progress'] = { title: 'Progress', render: progress };
+
+  function renderNav() {
+    const cur = location.hash.replace(/^#\/?/, '');
+    nav.innerHTML = GROUPS.map(([g, keys]) => `<h4>${g}</h4>` + keys.map(k => {
+      const p = Pages[k]; const done = p.done && p.done() ? '<span class="done">✓</span>' : '';
+      return `<a href="#/${k}"${k === cur ? ' aria-current="page"' : ''}>${p.title}${done}</a>`;
+    }).join('')).join('');
+  }
+
+  function route() {
+    leaveFns.forEach(f => { try { f(); } catch (e) { } }); leaveFns = [];
+    const key = location.hash.replace(/^#\/?/, '');
+    const page = Pages[key] || Pages[''];
+    document.title = (page.title === 'Home' ? '' : page.title + ' · ') + 'Box Box: F1 Strategy Prep';
+    main.innerHTML = ''; page.render(main); renderNav();
+    nav.classList.remove('open'); document.getElementById('menuBtn').setAttribute('aria-expanded', 'false');
+    window.scrollTo(0, 0); main.focus({ preventScroll: true });
+  }
+
+  function home(el) {
+    const s = SCEN[1];
+    el.innerHTML = `
+    <section class="hero">
+      <div>
+        <h1>Make the call.</h1>
+        <p class="lead">Revision and practice for F1 race strategy interviews and assessments: tyres, pit stops, undercuts, safety cars, timed race calls and interview practice.</p>
+        <a class="btn" href="#/learn/strategist" style="text-decoration:none;display:inline-block">Start learning</a>
+        <a class="btn ghost" href="#/scenarios" style="text-decoration:none;display:inline-block">Try a race call</a>
+      </div>
+      <div class="call" aria-label="Example race call">
+        <div class="sit">Lap 34 of 57 · P1, 8 s ahead · ${T('M')} Mediums, 34 laps old</div>
+        <div class="stint-label">Plan: stop on lap 36 for Hards</div>
+        <div class="stints"><div class="stint M" style="flex:36">M 36</div><div class="stint H" style="flex:21">H 21</div></div>
+        <div class="radio">"Safety car. Box or stay out?"</div>
+        <div class="choices"><button class="choice" data-i="0">Box now</button><button class="choice" data-i="1">Stay out</button></div>
+        <div id="hfb"></div>
+      </div>
+    </section>
+    <h2>Suggested route</h2>
+    <ol>
+      <li><a href="#/learn/strategist">Learn</a> the core ideas, from tyres to safety cars.</li>
+      <li>Play with the <a href="#/tools/undercut">tools</a> until the trade-offs feel intuitive.</li>
+      <li>Drill the maths in <a href="#/drills">randomised questions</a> and the <a href="#/sprint">60-second sprint</a>.</li>
+      <li>Make timed <a href="#/scenarios">race calls</a>, explaining your reasoning out loud.</li>
+      <li>Finish with <a href="#/interview/mock">mock interview</a> questions and <a href="#/cards">flashcards</a>.</li>
+    </ol>
+    ${GROUPS.slice(1).map(([g, keys]) => `<h2>${g}</h2><div class="grid">${keys.map(k => `<a class="tile" href="#/${k}"><strong>${Pages[k].title}</strong><span>${Pages[k].blurb || ''}</span></a>`).join('')}</div>`).join('')}
+    <p class="stint-label" style="margin-top:40px">Numbers in examples and tools are illustrative. An independent revision resource, not affiliated with Formula 1, the FIA or any team. Progress is saved only in this browser.</p>`;
+    el.querySelectorAll('.call .choice').forEach(b => b.onclick = () => {
+      const ok = +b.dataset.i === 0; el.querySelectorAll('.call .choice').forEach(x => { x.disabled = true; if (+x.dataset.i === 0) x.classList.add('right'); else if (x === b) x.classList.add('wrong'); });
+      el.querySelector('#hfb').innerHTML = `<div class="feedback ${ok ? 'ok' : 'no'}"><b class="${ok ? 'verdict-good' : 'verdict-bad'}">${ok ? 'Good call.' : 'Not the best call.'}</b> ${s.why} <a href="#/scenarios">More race calls</a></div>`;
+    });
+  }
+
+  function pct(t) { return t && t.attempts ? Math.round(100 * t.correct / t.attempts) : null; }
+  function progress(el) {
+    const learnDone = LEARN.filter(t => Store.get('learn.' + t.id, false)).length;
+    const rows = Object.entries(GEN).map(([k, g]) => { const t = Store.get('tally.drill.' + k, null); return `<tr><td>${g.name}</td><td class="num">${t ? t.attempts : 0}</td><td class="num">${pct(t) === null ? '–' : pct(t) + '%'}</td></tr>`; }).join('');
+    const sc = Store.get('tally.scenarios', null), mock = Store.get('tally.mock', null);
+    const boxes = [0, 0, 0, 0, 0]; CARDS.forEach((_, i) => boxes[Store.get('cards.' + i, 1) - 1]++);
+    el.innerHTML = `<div class="crumb">Start</div><h1>Progress</h1>
+    <p class="lead">Saved in this browser only. Weakest drill topics are where to spend your next session.</p>
+    <div class="panel"><h3 style="margin-top:0">Learn</h3><p>${learnDone} of ${LEARN.length} topics marked as revised</p><div class="bar"><div style="width:${100 * learnDone / LEARN.length}%"></div></div></div>
+    <div class="panel"><h3 style="margin-top:0">Drills</h3><table><tr><th>Topic</th><th class="num">Attempts</th><th class="num">Accuracy</th></tr>${rows}</table></div>
+    <div class="panel"><h3 style="margin-top:0">Race calls, sprint and mock interviews</h3>
+      <dl class="kv"><dt>Race calls</dt><dd>${sc ? `${sc.correct} of ${sc.attempts} good calls (${pct(sc)}%)` : 'none yet'}</dd>
+      <dt>Best race-call round</dt><dd>${Store.get('scenBest', 0)} of ${SCEN.length}</dd>
+      <dt>Sprint best</dt><dd>${Store.get('sprintBest', 0)} correct in 60 s</dd>
+      <dt>Mock interview answers rated okay or strong</dt><dd>${mock ? `${mock.correct} of ${mock.attempts}` : 'none yet'}</dd></dl></div>
+    <div class="panel"><h3 style="margin-top:0">Flashcards</h3><div class="boxes">${boxes.map((n, i) => `<span>Box ${i + 1}: <b>${n}</b></span>`).join('')}</div></div>
+    <button class="btn ghost" id="reset">Reset all progress</button><span id="rs" class="stint-label"></span>`;
+    let armed = false;
+    el.querySelector('#reset').onclick = e => {
+      if (!armed) { armed = true; e.target.textContent = 'Click again to confirm reset'; return; }
+      Store.reset(); progress(el); renderNav();
+    };
+  }
+
+  // theme and menu
+  const themeBtn = document.getElementById('themeBtn');
+  function applyTheme(t) {
+    if (t) document.documentElement.setAttribute('data-theme', t); else document.documentElement.removeAttribute('data-theme');
+    const dark = t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    themeBtn.textContent = dark ? 'Light' : 'Dark';
+  }
+  applyTheme(Store.get('theme', null));
+  themeBtn.onclick = () => { const dark = themeBtn.textContent === 'Dark'; const t = dark ? 'dark' : 'light'; Store.set('theme', t); applyTheme(t); };
+  document.getElementById('menuBtn').onclick = e => { const open = nav.classList.toggle('open'); e.target.setAttribute('aria-expanded', open); };
+
+  window.addEventListener('hashchange', route);
+  return { renderNav, onLeave: f => leaveFns.push(f), start: route };
+})();
+App.start();
+
+</script>
+</body>
+</html>
